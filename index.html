@@ -1,1 +1,4020 @@
 
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stravity - Food Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lazy+Dog&amp;family=DM+Sans:wght@300;400;500;600;700;800;900&amp;family=Nunito:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Hangyaboly&display=swap');
+        
+        body {
+            font-family: 'Kalam', cursive;
+            background: linear-gradient(135deg, #FDC3C3 0%, #F8BBD9 25%, #E1BEE7 50%, #F3E5F5 75%, #FDC3C3 100%);
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(233, 30, 99, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #2D1B69;
+            text-decoration: none;
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(225, 190, 231, 0.2);
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: transparent;
+            color: #666;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'DM Sans', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: linear-gradient(135deg, #E1BEE7, #F8BBD9);
+            color: #C2185B;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(225, 190, 231, 0.3);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-btn {
+            background: #E1BEE7;
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.8rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .icon-btn:hover {
+            background: #F8BBD9;
+            transform: translateY(-2px);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .account-btn {
+            background: linear-gradient(135deg, #E1BEE7, #F8BBD9);
+            color: #C2185B;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'DM Sans', sans-serif;
+            box-shadow: 0 4px 12px rgba(225, 190, 231, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .account-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .account-btn:hover::before {
+            left: 100%;
+        }
+
+        .account-btn:hover {
+            background: linear-gradient(135deg, #F8BBD9, #FDC3C3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(225, 190, 231, 0.4);
+        }
+
+        .account-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(225, 190, 231, 0.3);
+        }
+
+        /* Main Banner Section */
+        .main-banner {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #E1BEE7 0%, #F8BBD9 100%);
+        }
+
+        .geometric-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            right: 20%;
+            animation-delay: 4s;
+        }
+
+        .shape-4 {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 1s;
+        }
+
+        .shape-5 {
+            width: 120px;
+            height: 120px;
+            bottom: 40%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-left {
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #2D1B69;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+        }
+
+        .badge-icon {
+            font-size: 1.2rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-family: 'DM Sans', sans-serif;
+            color: #2D1B69;
+            text-shadow: 3px 3px 6px rgba(255,255,255,0.9);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #C2185B;
+            opacity: 1;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-family: 'Nunito', sans-serif;
+            text-shadow: 3px 3px 6px rgba(255,255,255,0.9);
+        }
+
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            font-family: 'DM Sans', sans-serif;
+            color: #2D1B69;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 1;
+            margin-top: 0.25rem;
+            font-weight: 800;
+            color: #2D1B69;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary, .cta-secondary {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .cta-primary {
+            background: white;
+            color: #E1BEE7;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-right {
+            position: relative;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .dashboard-mockup {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+        }
+
+        .mockup-header {
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .mockup-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .mockup-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #dee2e6;
+        }
+
+        .mockup-dots span:nth-child(1) { background: #ff5f56; }
+        .mockup-dots span:nth-child(2) { background: #ffbd2e; }
+        .mockup-dots span:nth-child(3) { background: #27ca3f; }
+
+        .mockup-title {
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.9rem;
+        }
+
+        .mockup-content {
+            padding: 2rem;
+        }
+
+        .mockup-chart {
+            margin-bottom: 2rem;
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: end;
+            gap: 0.5rem;
+            height: 100px;
+        }
+
+        .bar {
+            flex: 1;
+            background: linear-gradient(135deg, #1A0E3D, #2D1B69);
+            border-radius: 4px 4px 0 0;
+            animation: growBar 2s ease-out;
+        }
+
+        @keyframes growBar {
+            from { height: 0; }
+        }
+
+        .mockup-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .metric {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .metric-icon {
+            font-size: 1.5rem;
+        }
+
+        .metric-value {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #495057;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: white;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #495057;
+            animation: floatElement 3s ease-in-out infinite;
+        }
+
+        .element-1 {
+            top: 20%;
+            right: -10%;
+            animation-delay: 0s;
+        }
+
+        .element-2 {
+            bottom: 30%;
+            right: -15%;
+            animation-delay: 1s;
+        }
+
+        .element-3 {
+            top: 50%;
+            left: -10%;
+            animation-delay: 2s;
+        }
+
+        @keyframes floatElement {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* New Sections Styling */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .value-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #2D1B69;
+            margin-bottom: 1rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #f7fafc;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #E1BEE7, #F8BBD9);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #2D1B69;
+            margin-bottom: 1rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .value-card p {
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        .featured-section {
+            padding: 6rem 0;
+            background: #f7fafc;
+        }
+
+        .businesses-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-footer {
+            text-align: center;
+        }
+
+        .explore-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #E1BEE7, #F8BBD9);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .explore-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(225, 190, 231, 0.3);
+        }
+
+        .social-proof {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .proof-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .proof-text h3 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #2D1B69;
+            margin-bottom: 1rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .proof-text p {
+            color: #718096;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .proof-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .logo-item {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #a0aec0;
+            letter-spacing: 2px;
+        }
+
+        /* Food Items Positioning */
+        .food-items {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .food-item {
+            position: absolute;
+            transition: transform 0.3s ease;
+            pointer-events: auto;
+        }
+
+        .food-item:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Pear - Top Left */
+        .pear {
+            top: 10%;
+            left: 5%;
+            width: 150px;
+            height: 200px;
+        }
+
+        /* Coffee Cup - Top Right */
+        .coffee-cup {
+            top: 5%;
+            right: 8%;
+            width: 120px;
+            height: 180px;
+        }
+
+        /* Orange - Behind cake, center-left */
+        .orange {
+            top: 45%;
+            left: 25%;
+            width: 180px;
+            height: 180px;
+            z-index: 1;
+        }
+
+        /* Cake - Center */
+        .cake {
+            top: 35%;
+            left: 35%;
+            width: 200px;
+            height: 250px;
+            z-index: 2;
+        }
+
+        /* Watermelon - Center Right */
+        .watermelon {
+            top: 40%;
+            right: 10%;
+            width: 300px;
+            height: 200px;
+            z-index: 3;
+        }
+
+        /* Gingham Plate - Bottom Right */
+        .gingham-plate {
+            bottom: 5%;
+            right: 5%;
+            width: 150px;
+            height: 150px;
+            z-index: 1;
+        }
+
+        /* Mission Statement */
+        .mission-section {
+            text-align: center;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mission-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .utensil-icons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .utensil {
+            font-size: 1.5rem;
+            color: #e91e63;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-family: 'DM Sans', sans-serif;
+            margin-top: 0.5rem;
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 600px;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #e91e63;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            font-family: 'Fredoka One', cursive;
+            text-align: center;
+        }
+
+        /* Find Store Styles */
+        .page-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 2rem;
+            margin: -2rem -2rem 3rem -2rem;
+            border-radius: 0 0 30px 30px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .search-container {
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .search-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem 1.2rem 3.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-family: 'Nunito', sans-serif;
+            outline: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #E1BEE7;
+            font-size: 1.2rem;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            background: white;
+            border: 2px solid #e0e0e0;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .filter-tab.active, .filter-tab:hover {
+            background: #E1BEE7;
+            border-color: #E1BEE7;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(225, 190, 231, 0.3);
+        }
+
+        .businesses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .business-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 1px solid #f7fafc;
+            position: relative;
+        }
+
+        .business-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .business-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(225, 190, 231, 0.05), rgba(248, 187, 217, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        .business-card:hover::before {
+            opacity: 1;
+        }
+
+        .business-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #FDC3C3, #F8BBD9, #E1BEE7, #F3E5F5, #FDC3C3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .business-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .business-image.pizza {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+        }
+
+        .business-image.cafe {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+        }
+
+        .business-image.tech {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .business-image.flowers {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        }
+
+        .business-image.books {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+        }
+
+        .business-image.bakery {
+            background: linear-gradient(135deg, #feca57, #ff9ff3);
+        }
+
+        .business-info {
+            padding: 1.5rem;
+        }
+
+        .business-name {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #2D1B69;
+            margin-bottom: 0.5rem;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .business-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 1.2rem;
+        }
+
+        .rating-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .business-preview {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Business Detail Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: hidden;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .product-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .product-name {
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #2D1B69;
+        }
+
+        .product-price {
+            color: #e91e63;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* About Us Styles */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h3 {
+            color: #2D1B69;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Fredoka One', cursive;
+            font-weight: 900;
+        }
+
+        .about-text p {
+            line-height: 1.6;
+            color: #666;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .about-visual {
+            background: linear-gradient(135deg, #e91e63, #ff6b6b);
+            border-radius: 20px;
+            padding: 3rem;
+            color: white;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+        }
+
+        .about-visual h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        /* Learn More Styles */
+        .learn-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .info-card h3 {
+            color: #2D1B69;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-family: 'Fredoka One', cursive;
+            font-weight: 900;
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.6;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        /* Cart Styles */
+        .cart-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+            background: #fafafa;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cart-item-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .cart-total {
+            text-align: right;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #e91e63, #ff6b6b);
+            color: white;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666;
+        }
+
+        .empty-cart-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Account Styles */
+        .auth-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-header h3 {
+            color: #2D1B69;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+        }
+
+        .auth-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Nunito', sans-serif;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #e91e63;
+        }
+
+        .auth-btn {
+            width: 100%;
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Nunito', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .auth-btn:hover {
+            background: #ad1457;
+            transform: translateY(-2px);
+        }
+
+        .auth-switch {
+            text-align: center;
+            color: #666;
+            cursor: pointer;
+            text-decoration: underline;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .nav-step-btn {
+            background: #f5f5f5;
+            color: #333;
+            border: 2px solid #e0e0e0;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .nav-step-btn:hover:not(:disabled) {
+            background: #e91e63;
+            color: white;
+            border-color: #e91e63;
+        }
+
+        .nav-step-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .account-step {
+            display: none;
+        }
+
+        .account-step.active {
+            display: block;
+        }
+
+        .preference-item:hover {
+            border-color: #e91e63;
+            background: rgba(233, 30, 99, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .preference-item input:checked + span + span,
+        .preference-item:has(input:checked) {
+            border-color: #e91e63;
+            background: rgba(233, 30, 99, 0.1);
+        }
+
+        .preference-item:has(input:checked) span:last-child {
+            color: #e91e63;
+        }
+
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .stat-divider {
+                width: 100%;
+                height: 1px;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .dashboard-mockup {
+                transform: none;
+            }
+
+            .floating-element {
+                display: none;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .businesses-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .proof-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .proof-logos {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-banner {
+                min-height: 80vh;
+            }
+
+            .hero-content {
+                padding: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                padding: 1rem;
+            }
+
+            .cta-primary, .cta-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .value-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Header -->
+  <header class="header">
+   <div class="header-content"><a href="#" class="logo" id="logoText">Strativy</a>
+    <nav>
+     <ul class="nav-links">
+      <li><button class="nav-btn active" data-page="home">Home</button></li>
+      <li><button class="nav-btn" data-page="find-store">Find Store</button></li>
+      <li><button class="nav-btn" data-page="favorites">Favorites</button></li>
+      <li><button class="nav-btn" data-page="about">About Us</button></li>
+      <li><button class="nav-btn" data-page="learn">Learn More</button></li>
+     </ul>
+    </nav>
+    <div class="header-actions"><button class="icon-btn" data-page="cart" id="cartIcon"> 🛒 <span class="cart-badge" id="cartBadge" style="display: none;">0</span> </button> <button class="account-btn" data-page="account">Account</button>
+    </div>
+   </div>
+  </header><!-- Main Banner Section - Only visible on home page -->
+  <section class="main-banner" id="mainBanner"><!-- Hero Section with Geometric Design -->
+   <div class="hero-container"><!-- Animated Background Elements -->
+    <div class="geometric-bg">
+     <div class="floating-shape shape-1"></div>
+     <div class="floating-shape shape-2"></div>
+     <div class="floating-shape shape-3"></div>
+     <div class="floating-shape shape-4"></div>
+     <div class="floating-shape shape-5"></div>
+    </div><!-- Main Hero Content -->
+    <div class="hero-content">
+     <div class="hero-left">
+      <div class="hero-badge"><span class="badge-icon">★</span> <span>Discover Amazing Local Businesses</span>
+      </div>
+      <h1 class="hero-title" id="heroText">HUNGRY? WE GOT YOU</h1>
+      <p class="hero-subtitle" id="taglineText">Empowering Small Businesses, One Click at a Time</p>
+      <div class="hero-stats">
+       <div class="stat-item">
+        <div class="stat-number">
+         500+
+        </div>
+        <div class="stat-label">
+         Local Businesses
+        </div>
+       </div>
+       <div class="stat-divider"></div>
+       <div class="stat-item">
+        <div class="stat-number">
+         50K+
+        </div>
+        <div class="stat-label">
+         Happy Customers
+        </div>
+       </div>
+       <div class="stat-divider"></div>
+       <div class="stat-item">
+        <div class="stat-number">
+         4.8★
+        </div>
+        <div class="stat-label">
+         Average Rating
+        </div>
+       </div>
+      </div>
+      <div class="hero-actions"><button class="cta-primary" onclick="showPage('find-store')"> <span style="color: #2D1B69;">Explore Businesses</span>
+        <svg width="20" height="20" viewbox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#2D1B69" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg></button> <button class="cta-secondary" onclick="showAccountModal()"> <span style="color: #2D1B69;">Join Community</span>
+        <svg width="20" height="20" viewbox="0 0 24 24" fill="none"><path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21M12.5 7C12.5 9.20914 10.7091 11 8.5 11C6.29086 11 4.5 9.20914 4.5 7C4.5 4.79086 6.29086 3 8.5 3C10.7091 3 12.5 4.79086 12.5 7Z" stroke="#2D1B69" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg></button>
+      </div>
+     </div>
+     <div class="hero-right">
+      <div class="hero-visual">
+       <div class="dashboard-mockup">
+        <div class="mockup-header">
+         <div class="mockup-dots"><span></span><span></span><span></span>
+         </div>
+         <div class="mockup-title">
+          Business Dashboard
+         </div>
+        </div>
+        <div class="mockup-content">
+         <div class="mockup-chart">
+          <div class="chart-bars">
+           <div class="bar" style="height: 60%"></div>
+           <div class="bar" style="height: 80%"></div>
+           <div class="bar" style="height: 45%"></div>
+           <div class="bar" style="height: 90%"></div>
+           <div class="bar" style="height: 70%"></div>
+          </div>
+         </div>
+         <div class="mockup-metrics">
+          <div class="metric">
+           <div class="metric-icon">
+            📈
+           </div>
+           <div class="metric-text">
+            <div class="metric-value">
+             +127%
+            </div>
+            <div class="metric-label">
+             Growth
+            </div>
+           </div>
+          </div>
+          <div class="metric">
+           <div class="metric-icon">
+            💰
+           </div>
+           <div class="metric-text">
+            <div class="metric-value">
+             $24.5K
+            </div>
+            <div class="metric-label">
+             Revenue
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div><!-- Floating Elements -->
+       <div class="floating-element element-1">
+        <div class="element-icon">
+         🎯
+        </div>
+        <div class="element-text">
+         Target Reached
+        </div>
+       </div>
+       <div class="floating-element element-2">
+        <div class="element-icon">
+         ⚡
+        </div>
+        <div class="element-text">
+         Fast Setup
+        </div>
+       </div>
+       <div class="floating-element element-3">
+        <div class="element-icon">
+         🔒
+        </div>
+        <div class="element-text">
+         Secure
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Home Page Content -->
+  <div id="home-page" class="page-section active"><!-- Featured Businesses Section -->
+   <section class="featured-section">
+    <div class="container">
+     <div class="section-header">
+      <h2 class="section-title">Featured Businesses</h2>
+      <p class="section-subtitle">Discover amazing local businesses in your area</p>
+     </div>
+     <div class="businesses-showcase" id="featuredBusinesses"><!-- Featured businesses will be populated by JavaScript -->
+     </div>
+     <div class="section-footer"><button class="explore-btn" onclick="showPage('find-store')"> <span>Explore All Businesses</span>
+       <svg width="20" height="20" viewbox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+       </svg></button>
+     </div>
+    </div>
+   </section><!-- Social Proof Section -->
+   <section class="social-proof">
+    <div class="container">
+     <div class="proof-content">
+      <div class="proof-text">
+       <h3>Trusted by Industry Leaders</h3>
+       <p>Join thousands of successful businesses already growing with Strativy</p>
+      </div>
+      <div class="proof-logos">
+       <div class="logo-item">
+        STRIPE
+       </div>
+       <div class="logo-item">
+        PAYPAL
+       </div>
+       <div class="logo-item">
+        GOOGLE
+       </div>
+       <div class="logo-item">
+        SHOPIFY
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- Find Store Page -->
+  <div id="find-store-page" class="page-section">
+   <div class="page-hero">
+    <div class="page-hero-content">
+     <h1>Discover Local Businesses</h1>
+     <p>Find amazing restaurants, services, and shops in your area</p>
+    </div>
+   </div>
+   <div class="search-container">
+    <div class="search-wrapper"><span class="search-icon">🔍</span> <input type="text" class="search-input" placeholder="Search businesses, products, or services..." id="businessSearch">
+    </div>
+   </div><!-- GPS and Map Controls -->
+   <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;"><button onclick="getCurrentLocation()" id="locationBtn" style="background: #4caf50; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 25px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;"> 📍 Use My Location </button> <button onclick="toggleMapView()" id="mapToggleBtn" style="background: #2196f3; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 25px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;"> 🗺️ Show Map </button> <button onclick="sortByDistance()" id="sortDistanceBtn" style="background: #ff9800; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 25px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;" disabled> 📏 Sort by Distance </button>
+   </div><!-- Location Status -->
+   <div id="locationStatus" style="text-align: center; margin-bottom: 1rem; padding: 0.5rem; border-radius: 10px; display: none;"><span id="locationText"></span>
+   </div><!-- Interactive Map -->
+   <div id="mapContainer" style="display: none; margin-bottom: 2rem; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden;">
+    <div style="padding: 1rem; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+     <h3 style="color: #e91e63; margin: 0;">Business Locations</h3><button onclick="toggleMapView()" style="background: #f5f5f5; border: none; padding: 0.5rem; border-radius: 5px; cursor: pointer;">✕</button>
+    </div>
+    <div id="mapDisplay" style="height: 400px; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); position: relative; overflow: hidden;"><!-- Map will be rendered here -->
+    </div>
+   </div>
+   <div class="filter-tabs"><button class="filter-tab active" data-filter="all">All</button> <button class="filter-tab" data-filter="restaurant">Food</button> <button class="filter-tab" data-filter="service">Services</button> <button class="filter-tab" data-filter="retail">Shopping</button> <button class="filter-tab" data-filter="health">Health</button>
+   </div>
+   <div class="businesses-grid" id="businessesGrid"><!-- Business cards will be populated by JavaScript -->
+   </div>
+  </div><!-- Favorites Page -->
+  <div id="favorites-page" class="page-section">
+   <div class="page-hero">
+    <div class="page-hero-content">
+     <h1>Your Favorites</h1>
+     <p>All your favorite local businesses in one place</p>
+    </div>
+   </div>
+   <div class="businesses-grid" id="favoritesGrid"><!-- Favorite businesses will be populated by JavaScript -->
+   </div>
+  </div><!-- About Us Page -->
+  <div id="about-page" class="page-section">
+   <div class="about-content">
+    <div class="about-text">
+     <h3>About Us</h3>
+     <p>At Strativy, we believe every small business deserves a strong online presence. Our platform provides tailored, easy-to-use websites that help entrepreneurs showcase their products and services, reach more customers, and grow their business. We are passionate about supporting local businesses and helping them thrive in the digital world.</p>
+     <h3>Vision</h3>
+     <p>To become the go-to platform for small businesses seeking to grow, thrive, and connect with their customers online.</p>
+     <h3>Mission</h3>
+     <p>Strativy is dedicated to helping small businesses succeed by providing accessible, user-friendly, and professional websites that showcase their brand, attract customers, and drive growth.</p>
+    </div>
+    <div class="about-visual">
+     <h2>Supporting Small Businesses</h2>
+     <p>We're here to help your business grow and succeed in the digital world.</p>
+    </div>
+   </div><!-- Why Choose Strativy Section -->
+   <section class="value-section" style="background: #f7fafc; margin: 3rem 0; padding: 4rem 2rem; border-radius: 20px;">
+    <div class="container">
+     <div class="section-header">
+      <h2 class="section-title">Why Choose Strativy?</h2>
+      <p class="section-subtitle">Everything you need to build, grow, and scale your business online</p>
+     </div>
+     <div class="value-grid">
+      <div class="value-card">
+       <div class="value-icon">
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="none"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+       </div>
+       <h3>Lightning Fast Setup</h3>
+       <p>Get your business online in under 5 minutes with our intuitive setup wizard</p>
+      </div>
+      <div class="value-card">
+       <div class="value-icon">
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+       </div>
+       <h3>Premium Features</h3>
+       <p>Access professional tools typically reserved for enterprise-level businesses</p>
+      </div>
+      <div class="value-card">
+       <div class="value-icon">
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="none"><path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21M12.5 7C12.5 9.20914 10.7091 11 8.5 11C6.29086 11 4.5 9.20914 4.5 7C4.5 4.79086 6.29086 3 8.5 3C10.7091 3 12.5 4.79086 12.5 7ZM20 8V14M23 11H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+       </div>
+       <h3>24/7 Expert Support</h3>
+       <p>Our dedicated team is always ready to help you succeed and grow your business</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Stats Section -->
+   <section style="padding: 3rem 2rem; max-width: 1200px; margin: 2rem auto; text-align: center;">
+    <h2 style="font-size: 2.5rem; color: #e91e63; font-weight: 800; margin-bottom: 2rem; font-family: 'Fredoka One', cursive;">Our Impact</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+     <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+      <h3 style="font-size: 3rem; color: #e91e63; margin: 0; font-family: 'Fredoka One', cursive;">500+</h3>
+      <p style="color: #666; margin: 0.5rem 0 0 0; font-family: 'Nunito', sans-serif;">Active Businesses</p>
+     </div>
+     <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+      <h3 style="font-size: 3rem; color: #e91e63; margin: 0; font-family: 'Fredoka One', cursive;">50K+</h3>
+      <p style="color: #666; margin: 0.5rem 0 0 0; font-family: 'Nunito', sans-serif;">Happy Customers</p>
+     </div>
+     <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+      <h3 style="font-size: 3rem; color: #e91e63; margin: 0; font-family: 'Fredoka One', cursive;">98%</h3>
+      <p style="color: #666; margin: 0.5rem 0 0 0; font-family: 'Nunito', sans-serif;">Satisfaction Rate</p>
+     </div>
+     <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+      <h3 style="font-size: 3rem; color: #e91e63; margin: 0; font-family: 'Fredoka One', cursive;">24/7</h3>
+      <p style="color: #666; margin: 0.5rem 0 0 0; font-family: 'Nunito', sans-serif;">Support Available</p>
+     </div>
+    </div>
+   </section><!-- Trust Signals Section -->
+   <section style="background: white; padding: 3rem 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); margin: 2rem auto; max-width: 1200px;">
+    <h2 style="text-align: center; color: #e91e63; font-size: 2rem; margin-bottom: 2rem; font-family: 'Fredoka One', cursive;">Trusted by Industry Leaders</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; align-items: center; opacity: 0.7;">
+     <div style="text-align: center; padding: 1rem;">
+      <div style="font-size: 1.5rem; font-weight: bold; color: #666;">
+       STRIPE
+      </div>
+      <p style="font-size: 0.8rem; color: #999; margin: 0.5rem 0 0 0;">Payment Partner</p>
+     </div>
+     <div style="text-align: center; padding: 1rem;">
+      <div style="font-size: 1.5rem; font-weight: bold; color: #666;">
+       PAYPAL
+      </div>
+      <p style="font-size: 0.8rem; color: #999; margin: 0.5rem 0 0 0;">Payment Partner</p>
+     </div>
+     <div style="text-align: center; padding: 1rem;">
+      <div style="font-size: 1.5rem; font-weight: bold; color: #666;">
+       GOOGLE
+      </div>
+      <p style="font-size: 0.8rem; color: #999; margin: 0.5rem 0 0 0;">Analytics Partner</p>
+     </div>
+     <div style="text-align: center; padding: 1rem;">
+      <div style="font-size: 1.5rem; font-weight: bold; color: #666;">
+       MAILCHIMP
+      </div>
+      <p style="font-size: 0.8rem; color: #999; margin: 0.5rem 0 0 0;">Email Partner</p>
+     </div>
+    </div>
+   </section><!-- Testimonials Section -->
+   <section style="padding: 4rem 2rem; background: linear-gradient(135deg, #e91e63, #ff6b6b); margin: 2rem auto; border-radius: 30px; max-width: 1200px;">
+    <h2 style="text-align: center; color: white; font-size: 2.5rem; margin-bottom: 3rem; font-family: 'Fredoka One', cursive;">What Our Partners Say</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+     <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; color: white;">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+       <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #e91e63;">
+        MR
+       </div>
+       <div>
+        <h4 style="margin: 0; font-family: 'Nunito', sans-serif;">Maria Rodriguez</h4>
+        <p style="margin: 0; opacity: 0.8; font-size: 0.9rem;">Owner, Maria's Bakery</p>
+       </div>
+      </div>
+      <div style="color: #ffd700; margin-bottom: 1rem;">
+       ★★★★★
+      </div>
+      <p style="font-style: italic; line-height: 1.6;">"Strativy helped us reach 300% more customers online. Our sales have never been better! The setup was incredibly easy and support team is fantastic."</p>
+     </div>
+     <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; color: white;">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+       <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #e91e63;">
+        JC
+       </div>
+       <div>
+        <h4 style="margin: 0; font-family: 'Nunito', sans-serif;">James Chen</h4>
+        <p style="margin: 0; opacity: 0.8; font-size: 0.9rem;">Tech Repair Hub</p>
+       </div>
+      </div>
+      <div style="color: #ffd700; margin-bottom: 1rem;">
+       ★★★★★
+      </div>
+      <p style="font-style: italic; line-height: 1.6;">"The platform is so easy to use. I set up my store in minutes and started getting orders the same day! ROI was immediate."</p>
+     </div>
+     <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; color: white;">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+       <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #e91e63;">
+        SL
+       </div>
+       <div>
+        <h4 style="margin: 0; font-family: 'Nunito', sans-serif;">Sarah Lee</h4>
+        <p style="margin: 0; opacity: 0.8; font-size: 0.9rem;">Bloom Flower Shop</p>
+       </div>
+      </div>
+      <div style="color: #ffd700; margin-bottom: 1rem;">
+       ★★★★★
+      </div>
+      <p style="font-style: italic; line-height: 1.6;">"Customer support is amazing. They helped me every step of the way to grow my business online. Couldn't be happier!"</p>
+     </div>
+    </div>
+   </section><!-- Money-Back Guarantee -->
+   <section style="background: #f8f9fa; padding: 3rem 2rem; border-radius: 20px; text-align: center; margin: 2rem auto; max-width: 800px; border: 3px solid #e91e63;">
+    <div style="width: 80px; height: 80px; background: #e91e63; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem;">
+     ✓
+    </div>
+    <h2 style="color: #e91e63; font-size: 2rem; margin-bottom: 1rem; font-family: 'Fredoka One', cursive;">30-Day Money-Back Guarantee</h2>
+    <p style="color: #666; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">Try Strativy risk-free for 30 days. If you're not completely satisfied, we'll refund every penny. No questions asked.</p>
+    <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+     <div style="display: flex; align-items: center; gap: 0.5rem; color: #666;"><span style="color: #4caf50; font-size: 1.2rem;">✓</span> <span>No Setup Fees</span>
+     </div>
+     <div style="display: flex; align-items: center; gap: 0.5rem; color: #666;"><span style="color: #4caf50; font-size: 1.2rem;">✓</span> <span>Cancel Anytime</span>
+     </div>
+     <div style="display: flex; align-items: center; gap: 0.5rem; color: #666;"><span style="color: #4caf50; font-size: 1.2rem;">✓</span> <span>Full Refund</span>
+     </div>
+    </div>
+   </section>
+  </div><!-- Learn More Page -->
+  <div id="learn-page" class="page-section"><!-- Hero Section for Learn More -->
+   <div style="text-align: center; margin-bottom: 3rem; background: linear-gradient(135deg, #e91e63, #ff6b6b); padding: 3rem 2rem; border-radius: 20px; color: white;">
+    <h1 style="font-size: 2.5rem; margin-bottom: 1rem; font-family: 'Fredoka One', cursive;">Why Choose Strativy?</h1>
+    <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">Join 50,000+ businesses already growing with our platform. No setup fees, no hidden costs.</p>
+   </div><!-- Pricing Plans -->
+   <section style="margin-bottom: 4rem;">
+    <h2 style="text-align: center; font-size: 2.2rem; color: #e91e63; margin-bottom: 2rem; font-family: 'Fredoka One', cursive;">Simple, Transparent Pricing</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;"><!-- Starter Plan -->
+     <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); text-align: center; position: relative;">
+      <h3 style="color: #e91e63; font-size: 1.5rem; margin-bottom: 1rem;">Starter</h3>
+      <div style="font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 0.5rem;">
+       FREE
+      </div>
+      <p style="color: #666; margin-bottom: 2rem;">Perfect for getting started</p>
+      <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 2rem;">
+       <li style="padding: 0.5rem 0; color: #666;">✓ Basic business profile</li>
+       <li style="padding: 0.5rem 0; color: #666;">✓ Up to 10 products</li>
+       <li style="padding: 0.5rem 0; color: #666;">✓ Customer messaging</li>
+       <li style="padding: 0.5rem 0; color: #666;">✓ Mobile-friendly storefront</li>
+      </ul><button style="width: 100%; background: #e91e63; color: white; border: none; padding: 1rem; border-radius: 10px; font-weight: 600; cursor: pointer;">Get Started Free</button>
+     </div><!-- Professional Plan -->
+     <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 20px 40px rgba(233, 30, 99, 0.2); text-align: center; position: relative; border: 3px solid #e91e63; transform: scale(1.05);">
+      <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #e91e63; color: white; padding: 0.5rem 2rem; border-radius: 20px; font-size: 0.9rem; font-weight: bold;">
+       MOST POPULAR
+      </div>
+      <h3 style="color: #e91e63; font-size: 1.5rem; margin-bottom: 1rem;">Professional</h3>
+      <div style="font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 0.5rem;">
+       $29<span style="font-size: 1rem; color: #666;">/month</span>
+      </div>
+      <p style="color: #666; margin-bottom: 2rem;">Everything you need to grow</p>
+      <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 2rem;">
+       <li style="padding: 0.5rem 0; color: #666;">✓ Everything in Starter</li>
+       <li style="padding: 0.5rem 0; color: #666;">✓ Unlimited products</li>
+       <li style="padding: 0.5rem 0; color: #666;">✓ Advanced analytics</li>
+       <li style="padding: 0.5rem 0; color: #666;">✓ Custom domain</li>
+       <li style="padding: 0.5rem 0; color: #666;">✓ Payment processing</li>
+       <li style="padding: 0.5rem 0; color: #666;">✓ Marketing tools</li>
+      </ul><button style="width: 100%; background: #e91e63; color: white; border: none; padding: 1rem; border-radius: 10px; font-weight: 600; cursor: pointer;">Start 14-Day Free Trial</button>
+     </div><!-- Enterprise Plan -->
+     <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); text-align: center; position: relative;">
+      <h3 style="color: #e91e63; font-size: 1.5rem; margin-bottom: 1rem;">Enterprise</h3>
+      <div style="font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 0.5rem;">
+       $99<span style="font-size: 1rem; color: #666;">/month</span>
+      </div>
+      <p style="color: #666; margin-bottom: 2rem;">For scaling businesses</p>
+      <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 2rem;">
+       <li style="padding: 0.5rem 0; color: #666;">✓ Everything in Professional</li>
+       <li style="padding: 0.5rem 0; color: #666;">✓ Multi-location support</li>
+       <li style="padding: 0.5rem 0; color: #666;">✓ Advanced integrations</li>
+       <li style="padding: 0.5rem 0; color: #666;">✓ Priority support</li>
+       <li style="padding: 0.5rem 0; color: #666;">✓ Custom features</li>
+      </ul><button style="width: 100%; background: #e91e63; color: white; border: none; padding: 1rem; border-radius: 10px; font-weight: 600; cursor: pointer;">Contact Sales</button>
+     </div>
+    </div>
+   </section><!-- Key Features Section -->
+   <section style="margin-bottom: 4rem;">
+    <h2 style="text-align: center; font-size: 2.2rem; color: #e91e63; margin-bottom: 3rem; font-family: 'Fredoka One', cursive;">Everything You Need to Succeed Online</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;"><!-- E-commerce Tools -->
+     <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+      <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #e91e63, #ff6b6b); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; margin-bottom: 1rem;">
+       🛒
+      </div>
+      <h3 style="color: #e91e63; font-size: 1.3rem; margin-bottom: 1rem;">E-commerce Ready</h3>
+      <p style="color: #666; line-height: 1.6;">Accept payments, manage inventory, and process orders seamlessly. Integrated with Stripe, PayPal, and major payment processors.</p>
+     </div><!-- Marketing Tools -->
+     <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+      <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #4ecdc4, #44a08d); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; margin-bottom: 1rem;">
+       📈
+      </div>
+      <h3 style="color: #e91e63; font-size: 1.3rem; margin-bottom: 1rem;">Marketing Automation</h3>
+      <p style="color: #666; line-height: 1.6;">Email campaigns, social media integration, SEO optimization, and customer retention tools to grow your audience.</p>
+     </div><!-- Analytics -->
+     <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+      <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; margin-bottom: 1rem;">
+       📊
+      </div>
+      <h3 style="color: #e91e63; font-size: 1.3rem; margin-bottom: 1rem;">Real-time Analytics</h3>
+      <p style="color: #666; line-height: 1.6;">Track sales, customer behavior, and performance metrics with detailed reports and actionable insights.</p>
+     </div><!-- Mobile App -->
+     <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+      <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #feca57, #ff9ff3); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; margin-bottom: 1rem;">
+       📱
+      </div>
+      <h3 style="color: #e91e63; font-size: 1.3rem; margin-bottom: 1rem;">Mobile Management</h3>
+      <p style="color: #666; line-height: 1.6;">Manage your business on-the-go with our mobile app. Update products, respond to customers, and track sales anywhere.</p>
+     </div><!-- Customer Support -->
+     <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+      <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #a8edea, #fed6e3); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; margin-bottom: 1rem;">
+       💬
+      </div>
+      <h3 style="color: #e91e63; font-size: 1.3rem; margin-bottom: 1rem;">24/7 Support</h3>
+      <p style="color: #666; line-height: 1.6;">Get help when you need it with live chat, phone support, and comprehensive documentation. Average response time: 2 minutes.</p>
+     </div><!-- Security -->
+     <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+      <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ff6b6b, #4ecdc4); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; margin-bottom: 1rem;">
+       🔒
+      </div>
+      <h3 style="color: #e91e63; font-size: 1.3rem; margin-bottom: 1rem;">Enterprise Security</h3>
+      <p style="color: #666; line-height: 1.6;">SSL certificates, PCI compliance, regular backups, and fraud protection keep your business and customers safe.</p>
+     </div>
+    </div>
+   </section><!-- Success Stories -->
+   <section style="background: linear-gradient(135deg, #e91e63, #ff6b6b); padding: 4rem 2rem; border-radius: 20px; color: white; margin-bottom: 4rem;">
+    <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 3rem; font-family: 'Fredoka One', cursive;">Real Results from Real Businesses</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+     <div style="text-align: center;">
+      <div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.5rem;">
+       300%
+      </div>
+      <p style="opacity: 0.9;">Average increase in online sales within 3 months</p>
+     </div>
+     <div style="text-align: center;">
+      <div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.5rem;">
+       2.5x
+      </div>
+      <p style="opacity: 0.9;">More customer reach compared to traditional methods</p>
+     </div>
+     <div style="text-align: center;">
+      <div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.5rem;">
+       85%
+      </div>
+      <p style="opacity: 0.9;">Of businesses report improved customer satisfaction</p>
+     </div>
+    </div>
+   </section><!-- Getting Started Steps -->
+   <section>
+    <h2 style="text-align: center; font-size: 2.2rem; color: #e91e63; margin-bottom: 3rem; font-family: 'Fredoka One', cursive;">Get Started in Minutes</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+     <div style="text-align: center; padding: 2rem;">
+      <div style="width: 80px; height: 80px; background: #e91e63; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; margin: 0 auto 1rem;">
+       1
+      </div>
+      <h3 style="color: #e91e63; margin-bottom: 1rem;">Sign Up Free</h3>
+      <p style="color: #666;">Create your account in under 2 minutes. No credit card required to start.</p>
+     </div>
+     <div style="text-align: center; padding: 2rem;">
+      <div style="width: 80px; height: 80px; background: #e91e63; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; margin: 0 auto 1rem;">
+       2
+      </div>
+      <h3 style="color: #e91e63; margin-bottom: 1rem;">Build Your Store</h3>
+      <p style="color: #666;">Use our drag-and-drop builder to create your professional storefront in minutes.</p>
+     </div>
+     <div style="text-align: center; padding: 2rem;">
+      <div style="width: 80px; height: 80px; background: #e91e63; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; margin: 0 auto 1rem;">
+       3
+      </div>
+      <h3 style="color: #e91e63; margin-bottom: 1rem;">Start Selling</h3>
+      <p style="color: #666;">Add products, set up payments, and start accepting orders immediately.</p>
+     </div>
+     <div style="text-align: center; padding: 2rem;">
+      <div style="width: 80px; height: 80px; background: #e91e63; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; margin: 0 auto 1rem;">
+       4
+      </div>
+      <h3 style="color: #e91e63; margin-bottom: 1rem;">Grow &amp; Scale</h3>
+      <p style="color: #666;">Use our marketing tools and analytics to expand your reach and increase sales.</p>
+     </div>
+    </div>
+   </section>
+  </div><!-- Cart Page -->
+  <div id="cart-page" class="page-section">
+   <div class="page-hero" style="padding: 2rem;">
+    <div class="page-hero-content">
+     <h1>Your Cart</h1>
+    </div>
+   </div>
+   <div class="cart-container">
+    <div id="cartItems">
+     <div class="empty-cart">
+      <div class="empty-cart-icon">
+       Cart
+      </div>
+      <h3 style="color: #e91e63; margin-bottom: 1rem;">Your cart is empty</h3>
+      <p>Start shopping to add items to your cart</p><button onclick="showPage('find-store')" style="background: #e91e63; color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-weight: 600; cursor: pointer; margin-top: 1rem; font-family: 'Nunito', sans-serif;">Start Shopping</button>
+     </div>
+    </div>
+    <div class="cart-total" id="cartTotal" style="display: none;">
+     <div>
+      Total: $0.00
+     </div><button onclick="proceedToCheckout()" style="width: 100%; background: #4caf50; color: white; border: none; padding: 1rem; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-top: 1rem; font-family: 'Nunito', sans-serif;"> Proceed to Checkout 🛒 </button>
+    </div>
+   </div>
+  </div><!-- Account Modal -->
+  <div id="accountModal" class="modal">
+   <div class="modal-content" style="max-width: 900px; max-height: 95vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; overflow: hidden; position: relative; display: flex; flex-direction: column;"><!-- Animated Background Elements -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 1;">
+     <div style="position: absolute; width: 150px; height: 150px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); top: 10%; left: 10%; animation: float 6s ease-in-out infinite;"></div>
+     <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); top: 60%; right: 15%; animation: float 6s ease-in-out infinite 2s;"></div>
+     <div style="position: absolute; width: 80px; height: 80px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); bottom: 20%; left: 20%; animation: float 6s ease-in-out infinite 4s;"></div>
+    </div>
+    <div class="modal-header" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.2); position: relative; z-index: 10; flex-shrink: 0;"><button class="close-btn" onclick="closeAccountModal()" style="color: white; background: rgba(255, 255, 255, 0.2); border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">×</button>
+     <h2 style="color: white; text-align: center; margin: 0;">Account</h2>
+    </div>
+    <div class="modal-body" style="background: white; position: relative; z-index: 10; flex: 1; overflow-y: auto;">
+     <div class="auth-container" style="padding: 2rem; box-shadow: none; border-radius: 0; background: white; min-height: 100%;"><!-- Login Form -->
+      <div id="loginForm" class="auth-form active">
+       <div class="auth-header">
+        <h3>Login</h3>
+        <p>Sign in to your account</p>
+       </div>
+       <form>
+        <div class="form-group"><label for="loginEmail">Email</label> <input type="email" id="loginEmail" required>
+        </div>
+        <div class="form-group"><label for="loginPassword">Password</label> <input type="password" id="loginPassword" required>
+        </div><button type="submit" class="auth-btn">Login</button>
+       </form>
+       <p class="auth-switch" onclick="showForm('createAccount')">Create an Account</p>
+       <p class="auth-switch" onclick="showForm('businessRegister')">Register for Business</p>
+      </div><!-- Create Account Form -->
+      <div id="createAccountForm" class="auth-form">
+       <div class="auth-header">
+        <h3>Join Strativy</h3>
+        <p>Create your account to get started</p>
+       </div><!-- Step Progress Indicator for Account Creation -->
+       <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+         <div id="accountStepIndicator1" style="width: 30px; height: 30px; border-radius: 50%; background: #e91e63; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">
+          1
+         </div>
+         <div style="width: 40px; height: 2px; background: #e0e0e0;"></div>
+         <div id="accountStepIndicator2" style="width: 30px; height: 30px; border-radius: 50%; background: #e0e0e0; color: #666; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">
+          2
+         </div>
+        </div>
+       </div><!-- Step 1: Basic Account Info -->
+       <div class="account-step active" id="accountStep1">
+        <h4 style="color: #e91e63; margin-bottom: 1rem; text-align: center;">Step 1: Account Information</h4>
+        <form>
+         <div class="form-group"><label for="createUsername">Username</label> <input type="text" id="createUsername" required>
+         </div>
+         <div class="form-group"><label for="createEmail">Email</label> <input type="email" id="createEmail" required>
+         </div>
+         <div class="form-group"><label for="createPassword">Password</label> <input type="password" id="createPassword" required>
+         </div>
+         <div class="form-group"><label for="confirmPassword">Confirm Password</label> <input type="password" id="confirmPassword" required>
+         </div>
+         <div class="form-group"><label for="createAddress">Address</label> <input type="text" id="createAddress" placeholder="Enter your full address" required>
+         </div>
+        </form>
+       </div><!-- Step 2: Preferences -->
+       <div class="account-step" id="accountStep2">
+        <h4 style="color: #e91e63; margin-bottom: 1rem; text-align: center;">Step 2: What do you like?</h4>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">Help us personalize your experience by selecting your interests</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem;"><label class="preference-item" style="display: flex; flex-direction: column; align-items: center; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;"> <input type="checkbox" name="preferences" value="food" style="display: none;"> <span style="font-size: 2rem; margin-bottom: 0.5rem;">🍕</span> <span style="font-weight: 600; color: #333;">Food &amp; Dining</span> </label> <label class="preference-item" style="display: flex; flex-direction: column; align-items: center; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;"> <input type="checkbox" name="preferences" value="shopping" style="display: none;"> <span style="font-size: 2rem; margin-bottom: 0.5rem;">🛍️</span> <span style="font-weight: 600; color: #333;">Shopping</span> </label> <label class="preference-item" style="display: flex; flex-direction: column; align-items: center; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;"> <input type="checkbox" name="preferences" value="health" style="display: none;"> <span style="font-size: 2rem; margin-bottom: 0.5rem;">💪</span> <span style="font-weight: 600; color: #333;">Health &amp; Fitness</span> </label> <label class="preference-item" style="display: flex; flex-direction: column; align-items: center; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;"> <input type="checkbox" name="preferences" value="services" style="display: none;"> <span style="font-size: 2rem; margin-bottom: 0.5rem;">🔧</span> <span style="font-weight: 600; color: #333;">Services</span> </label> <label class="preference-item" style="display: flex; flex-direction: column; align-items: center; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;"> <input type="checkbox" name="preferences" value="entertainment" style="display: none;"> <span style="font-size: 2rem; margin-bottom: 0.5rem;">🎵</span> <span style="font-weight: 600; color: #333;">Entertainment</span> </label> <label class="preference-item" style="display: flex; flex-direction: column; align-items: center; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;"> <input type="checkbox" name="preferences" value="beauty" style="display: none;"> <span style="font-size: 2rem; margin-bottom: 0.5rem;">💄</span> <span style="font-weight: 600; color: #333;">Beauty &amp; Care</span> </label>
+        </div><button type="submit" class="auth-btn" onclick="completeAccountCreation()">Create Account</button>
+       </div>
+       <div class="account-form-navigation" style="display: flex; justify-content: space-between; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee;"><button type="button" class="nav-step-btn" id="accountPrevBtn" onclick="changeAccountStep(-1)" disabled>← Previous</button> <button type="button" class="nav-step-btn" id="accountNextBtn" onclick="changeAccountStep(1)">Next →</button>
+       </div>
+       <p class="auth-switch" onclick="showForm('login')" style="margin-top: 1rem; text-align: center;">Already have an account? Login</p>
+      </div><!-- Business Registration Form -->
+      <div id="businessRegisterForm" class="auth-form">
+       <div class="auth-header">
+        <h3>Register Your Business</h3>
+        <p>Join our platform and grow your business</p>
+       </div><!-- Step Progress Indicator -->
+       <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+         <div id="stepIndicator1" style="width: 30px; height: 30px; border-radius: 50%; background: #e91e63; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">
+          1
+         </div>
+         <div style="width: 40px; height: 2px; background: #e0e0e0;"></div>
+         <div id="stepIndicator2" style="width: 30px; height: 30px; border-radius: 50%; background: #e0e0e0; color: #666; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">
+          2
+         </div>
+         <div style="width: 40px; height: 2px; background: #e0e0e0;"></div>
+         <div id="stepIndicator3" style="width: 30px; height: 30px; border-radius: 50%; background: #e0e0e0; color: #666; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">
+          3
+         </div>
+        </div>
+       </div><!-- Step 1: Basic Info -->
+       <div class="form-step active" id="step1">
+        <h4 style="color: #e91e63; margin-bottom: 1rem; text-align: center;">Step 1: Basic Information</h4>
+        <div class="form-group"><label for="businessName">Business Name</label> <input type="text" id="businessName" required>
+        </div>
+        <div class="form-group"><label for="businessType">Business Type</label> <select id="businessType" required> <option value="">Select Business Type</option> <option value="restaurant">Restaurant</option> <option value="retail">Retail Store</option> <option value="service">Service Provider</option> <option value="other">Other</option> </select>
+        </div>
+        <div class="form-group"><label for="businessAddress">Business Address</label> <input type="text" id="businessAddress" required>
+        </div>
+       </div><!-- Step 2: Contact Info -->
+       <div class="form-step" id="step2">
+        <h4 style="color: #e91e63; margin-bottom: 1rem; text-align: center;">Step 2: Contact Information</h4>
+        <div class="form-group"><label for="ownerName">Owner Name</label> <input type="text" id="ownerName" required>
+        </div>
+        <div class="form-group"><label for="businessPhone">Business Phone</label> <input type="tel" id="businessPhone" required>
+        </div>
+        <div class="form-group"><label for="businessEmail">Business Email</label> <input type="email" id="businessEmail" required>
+        </div>
+       </div><!-- Step 3: Validation -->
+       <div class="form-step" id="step3">
+        <h4 style="color: #e91e63; margin-bottom: 1rem; text-align: center;">Step 3: Business Validation</h4>
+        <div class="form-group"><label for="businessPermit">Business Permit Number</label> <input type="text" id="businessPermit" required>
+        </div>
+        <div class="form-group"><label for="businessRegistration">Business Registration Number</label> <input type="text" id="businessRegistration" required>
+        </div>
+        <div class="form-group"><label for="taxId">Tax ID Number</label> <input type="text" id="taxId" required>
+        </div><button type="submit" class="auth-btn">Register Business</button>
+       </div>
+       <div class="form-navigation" style="display: flex; justify-content: space-between; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee;"><button type="button" class="nav-step-btn" id="prevBtn" onclick="changeStep(-1)" disabled>← Previous</button> <button type="button" class="nav-step-btn" id="nextBtn" onclick="changeStep(1)">Next →</button>
+       </div>
+       <p class="auth-switch" onclick="showForm('login')" style="margin-top: 1rem; text-align: center;">Back to Login</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div><!-- Business Detail Modal -->
+  <div id="businessModal" class="modal" onclick="closeModal()">
+   <div class="modal-content" onclick="event.stopPropagation()">
+    <div class="modal-header">
+     <h2 id="modalBusinessName">Business Name</h2>
+     <div class="business-rating"><span class="stars" id="modalStars">★★★★★</span> <span class="rating-text" id="modalRating">(4.5/5)</span>
+     </div>
+    </div>
+    <div class="modal-body" id="modalBody">
+     <p id="modalDescription">Business description goes here...</p>
+     <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: #e91e63;">Products &amp; Services</h3>
+     <div class="products-grid" id="modalProducts"><!-- Products will be populated by JavaScript -->
+     </div>
+    </div>
+   </div>
+  </div><!-- Product Preview Modal -->
+  <div id="productModal" class="modal" onclick="closeProductModal()">
+   <div class="modal-content" style="max-width: 600px;" onclick="event.stopPropagation()">
+    <div class="modal-header">
+     <h2 id="productModalName" style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;">Product Name</h2>
+     <div style="color: #666; font-size: 1rem;" id="productModalBusiness">
+      Business Name
+     </div>
+    </div>
+    <div class="modal-body">
+     <div id="productModalImage" style="width: 100%; height: 300px; background: linear-gradient(135deg, #ff6b6b, #4ecdc4); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white; margin-bottom: 2rem; position: relative; overflow: hidden;">
+      🍕 
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns=\" http: www.w3.org 2000 svg\ viewbox="\&quot;0" 0 100 100\>
+       <defs>
+        <pattern id="\&quot;grid\&quot;" width="\&quot;20\&quot;" height="\&quot;20\&quot;" patternunits="\&quot;userSpaceOnUse\&quot;">
+         <path d="\&quot;M" 20 0 l 20\ fill="\&quot;none\&quot;" stroke="\&quot;rgba(255,255,255,0.1)\&quot;" stroke-width="\&quot;1\&quot;/" />
+        </pattern>
+       </defs><rect width="\&quot;100\&quot;" height="\&quot;100\&quot;" fill="\&quot;url(%23grid)\&quot;/">
+        '); opacity: 0.3;"&gt;
+       </rect>
+      </div>
+     </div>
+     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 15px;">
+      <div>
+       <div style="font-size: 2rem; font-weight: bold; color: #e91e63;" id="productModalPrice">
+        $12.99
+       </div>
+       <div style="color: #666; font-size: 0.9rem;">
+        Price
+       </div>
+      </div><button onclick="addToCartFromPreview()" style="background: #e91e63; color: white; border: none; padding: 1rem 2rem; border-radius: 12px; font-weight: 600; cursor: pointer; font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.background='#ad1457'" onmouseout="this.style.background='#e91e63'"> 🛒 Add to Cart </button>
+     </div>
+     <div id="productModalDescription" style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+      <h3 style="color: #e91e63; margin-bottom: 1rem; font-size: 1.2rem;">About This Item</h3>
+      <p style="color: #666; line-height: 1.6;">Delicious and freshly made with premium ingredients. Perfect for any occasion!</p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+        // Configuration
+        const defaultConfig = {
+            logo_text: "Strativy",
+            hero_text: "HUNGRY? WE GOT YOU",
+            tagline_text: "Empowering Small Businesses, One Click at a Time"
+        };
+
+        let config = { ...defaultConfig };
+        let currentPage = 'home';
+        let currentStep = 1;
+        let cart = [];
+        let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+
+
+        // GPS and Location functionality
+        let userLocation = null;
+        let mapVisible = false;
+
+        // Sample business data - shuffled on each page load with GPS coordinates
+        const businessesData = [
+            {
+                id: 1,
+                name: "Mario's Pizza Palace",
+                rating: 4.8,
+                image: "🍕",
+                category: "pizza",
+                description: "Authentic Italian pizza made with fresh ingredients and traditional recipes passed down through generations.",
+                address: "123 Main Street, Downtown District, City Center 12345",
+                phone: "(555) 123-4567",
+                email: "info@mariospizza.com",
+                coordinates: { lat: 40.7589, lng: -73.9851 },
+                hours: {
+                    monday: "11:00 AM - 10:00 PM",
+                    tuesday: "11:00 AM - 10:00 PM",
+                    wednesday: "11:00 AM - 10:00 PM",
+                    thursday: "11:00 AM - 10:00 PM",
+                    friday: "11:00 AM - 11:00 PM",
+                    saturday: "11:00 AM - 11:00 PM",
+                    sunday: "12:00 PM - 9:00 PM"
+                },
+                products: [
+                    { name: "Margherita Pizza", price: 12.99 },
+                    { name: "Pepperoni Pizza", price: 14.99 },
+                    { name: "Supreme Pizza", price: 18.99 },
+                    { name: "Garlic Bread", price: 6.99 }
+                ]
+            },
+            {
+                id: 2,
+                name: "Fresh Garden Cafe",
+                rating: 4.6,
+                image: "☕",
+                category: "cafe",
+                description: "Healthy, organic meals and fresh smoothies made from locally sourced ingredients.",
+                address: "456 Green Avenue, Organic District, Health Plaza 12346",
+                phone: "(555) 234-5678",
+                email: "hello@freshgardencafe.com",
+                hours: {
+                    monday: "7:00 AM - 6:00 PM",
+                    tuesday: "7:00 AM - 6:00 PM",
+                    wednesday: "7:00 AM - 6:00 PM",
+                    thursday: "7:00 AM - 6:00 PM",
+                    friday: "7:00 AM - 7:00 PM",
+                    saturday: "8:00 AM - 7:00 PM",
+                    sunday: "8:00 AM - 5:00 PM"
+                },
+                products: [
+                    { name: "Avocado Toast", price: 8.99 },
+                    { name: "Green Smoothie", price: 6.99 },
+                    { name: "Quinoa Salad", price: 11.99 },
+                    { name: "Acai Bowl", price: 9.99 }
+                ]
+            },
+            {
+                id: 3,
+                name: "Tech Repair Hub",
+                rating: 4.9,
+                image: "🔧",
+                category: "tech",
+                description: "Professional electronics repair services for phones, laptops, and tablets with quick turnaround times.",
+                address: "789 Tech Boulevard, Innovation Center, Digital Square 12347",
+                phone: "(555) 345-6789",
+                email: "support@techrepairhub.com",
+                hours: {
+                    monday: "9:00 AM - 7:00 PM",
+                    tuesday: "9:00 AM - 7:00 PM",
+                    wednesday: "9:00 AM - 7:00 PM",
+                    thursday: "9:00 AM - 7:00 PM",
+                    friday: "9:00 AM - 8:00 PM",
+                    saturday: "10:00 AM - 6:00 PM",
+                    sunday: "Closed"
+                },
+                products: [
+                    { name: "Phone Screen Repair", price: 89.99 },
+                    { name: "Laptop Cleaning", price: 49.99 },
+                    { name: "Battery Replacement", price: 69.99 },
+                    { name: "Data Recovery", price: 129.99 }
+                ]
+            },
+            {
+                id: 4,
+                name: "Bloom Flower Shop",
+                rating: 4.7,
+                image: "🌸",
+                category: "flowers",
+                description: "Beautiful fresh flowers and custom arrangements for all occasions and celebrations.",
+                address: "321 Blossom Street, Garden District, Floral Avenue 12348",
+                phone: "(555) 456-7890",
+                email: "orders@bloomflowershop.com",
+                hours: {
+                    monday: "9:00 AM - 6:00 PM",
+                    tuesday: "9:00 AM - 6:00 PM",
+                    wednesday: "9:00 AM - 6:00 PM",
+                    thursday: "9:00 AM - 6:00 PM",
+                    friday: "9:00 AM - 7:00 PM",
+                    saturday: "9:00 AM - 7:00 PM",
+                    sunday: "10:00 AM - 4:00 PM"
+                },
+                products: [
+                    { name: "Rose Bouquet", price: 24.99 },
+                    { name: "Wedding Arrangement", price: 149.99 },
+                    { name: "Potted Plants", price: 19.99 },
+                    { name: "Seasonal Wreath", price: 34.99 }
+                ]
+            },
+            {
+                id: 5,
+                name: "Cozy Corner Bookstore",
+                rating: 4.5,
+                image: "📚",
+                category: "books",
+                description: "Independent bookstore with carefully curated selection of books and cozy reading spaces.",
+                address: "654 Literary Lane, Book District, Reading Corner 12349",
+                phone: "(555) 567-8901",
+                email: "info@cozycornerbooks.com",
+                hours: {
+                    monday: "10:00 AM - 8:00 PM",
+                    tuesday: "10:00 AM - 8:00 PM",
+                    wednesday: "10:00 AM - 8:00 PM",
+                    thursday: "10:00 AM - 9:00 PM",
+                    friday: "10:00 AM - 9:00 PM",
+                    saturday: "9:00 AM - 9:00 PM",
+                    sunday: "11:00 AM - 6:00 PM"
+                },
+                products: [
+                    { name: "Fiction Bestsellers", price: 16.99 },
+                    { name: "Coffee & Book Bundle", price: 22.99 },
+                    { name: "Local Author Books", price: 14.99 },
+                    { name: "Book Club Membership", price: 29.99 }
+                ]
+            },
+            {
+                id: 6,
+                name: "Artisan Bakery",
+                rating: 4.8,
+                image: "🥖",
+                category: "bakery",
+                description: "Handcrafted breads, pastries, and cakes made fresh daily using traditional baking methods.",
+                address: "987 Baker Street, Artisan Quarter, Fresh Bread Plaza 12350",
+                phone: "(555) 678-9012",
+                email: "orders@artisanbakery.com",
+                hours: {
+                    monday: "6:00 AM - 3:00 PM",
+                    tuesday: "6:00 AM - 3:00 PM",
+                    wednesday: "6:00 AM - 3:00 PM",
+                    thursday: "6:00 AM - 3:00 PM",
+                    friday: "6:00 AM - 4:00 PM",
+                    saturday: "6:00 AM - 4:00 PM",
+                    sunday: "7:00 AM - 2:00 PM"
+                },
+                products: [
+                    { name: "Sourdough Bread", price: 5.99 },
+                    { name: "Croissants (6 pack)", price: 12.99 },
+                    { name: "Custom Birthday Cake", price: 39.99 },
+                    { name: "Danish Pastries", price: 3.99 }
+                ]
+            },
+            {
+                id: 7,
+                name: "Fitness First Gym",
+                rating: 4.4,
+                image: "💪",
+                category: "fitness",
+                description: "Modern fitness facility with state-of-the-art equipment and personal training services.",
+                address: "147 Fitness Drive, Health District, Wellness Center 12351",
+                phone: "(555) 789-0123",
+                email: "membership@fitnessfirstgym.com",
+                hours: {
+                    monday: "5:00 AM - 11:00 PM",
+                    tuesday: "5:00 AM - 11:00 PM",
+                    wednesday: "5:00 AM - 11:00 PM",
+                    thursday: "5:00 AM - 11:00 PM",
+                    friday: "5:00 AM - 10:00 PM",
+                    saturday: "6:00 AM - 9:00 PM",
+                    sunday: "7:00 AM - 8:00 PM"
+                },
+                products: [
+                    { name: "Monthly Membership", price: 49.99 },
+                    { name: "Personal Training Session", price: 75.00 },
+                    { name: "Group Class Pass", price: 89.99 },
+                    { name: "Nutrition Consultation", price: 65.00 }
+                ]
+            },
+            {
+                id: 8,
+                name: "Vintage Threads",
+                rating: 4.6,
+                image: "👕",
+                category: "fashion",
+                description: "Curated vintage clothing and accessories from different eras, carefully selected for quality and style.",
+                address: "258 Retro Road, Fashion District, Style Avenue 12352",
+                phone: "(555) 890-1234",
+                email: "shop@vintagethreads.com",
+                hours: {
+                    monday: "11:00 AM - 7:00 PM",
+                    tuesday: "11:00 AM - 7:00 PM",
+                    wednesday: "11:00 AM - 7:00 PM",
+                    thursday: "11:00 AM - 8:00 PM",
+                    friday: "11:00 AM - 8:00 PM",
+                    saturday: "10:00 AM - 8:00 PM",
+                    sunday: "12:00 PM - 6:00 PM"
+                },
+                products: [
+                    { name: "Vintage Denim Jacket", price: 45.99 },
+                    { name: "Retro Band T-Shirt", price: 24.99 },
+                    { name: "Vintage Accessories", price: 15.99 },
+                    { name: "Designer Vintage Bag", price: 89.99 }
+                ]
+            },
+            {
+                id: 9,
+                name: "Pet Paradise",
+                rating: 4.7,
+                image: "🐕",
+                category: "pets",
+                description: "Complete pet care services including grooming, supplies, and veterinary consultations.",
+                address: "369 Pet Lane, Animal District, Furry Friends Plaza 12353",
+                phone: "(555) 901-2345",
+                email: "care@petparadise.com",
+                hours: {
+                    monday: "8:00 AM - 6:00 PM",
+                    tuesday: "8:00 AM - 6:00 PM",
+                    wednesday: "8:00 AM - 6:00 PM",
+                    thursday: "8:00 AM - 6:00 PM",
+                    friday: "8:00 AM - 7:00 PM",
+                    saturday: "8:00 AM - 5:00 PM",
+                    sunday: "9:00 AM - 4:00 PM"
+                },
+                products: [
+                    { name: "Dog Grooming", price: 35.99 },
+                    { name: "Premium Pet Food", price: 54.99 },
+                    { name: "Pet Toys Bundle", price: 19.99 },
+                    { name: "Vet Consultation", price: 85.00 }
+                ]
+            },
+            {
+                id: 10,
+                name: "Home Harmony Cleaning",
+                rating: 4.9,
+                image: "🧽",
+                category: "cleaning",
+                description: "Professional residential and commercial cleaning services with eco-friendly products.",
+                address: "741 Clean Street, Service District, Sparkle Square 12354",
+                phone: "(555) 012-3456",
+                email: "booking@homeharmonycleaning.com",
+                hours: {
+                    monday: "8:00 AM - 6:00 PM",
+                    tuesday: "8:00 AM - 6:00 PM",
+                    wednesday: "8:00 AM - 6:00 PM",
+                    thursday: "8:00 AM - 6:00 PM",
+                    friday: "8:00 AM - 6:00 PM",
+                    saturday: "9:00 AM - 4:00 PM",
+                    sunday: "Closed"
+                },
+                products: [
+                    { name: "Deep House Cleaning", price: 149.99 },
+                    { name: "Weekly Maintenance", price: 79.99 },
+                    { name: "Office Cleaning", price: 199.99 },
+                    { name: "Move-in/Move-out Clean", price: 249.99 }
+                ]
+            },
+            {
+                id: 11,
+                name: "Sunset Sushi Bar",
+                rating: 4.9,
+                image: "🍣",
+                category: "sushi",
+                description: "Fresh sushi and Japanese cuisine prepared by master chefs with premium ingredients.",
+                address: "852 Ocean Drive, Waterfront District, Sushi Plaza 12355",
+                phone: "(555) 111-2222",
+                email: "reservations@sunsetsushi.com",
+                hours: {
+                    monday: "5:00 PM - 10:00 PM",
+                    tuesday: "5:00 PM - 10:00 PM",
+                    wednesday: "5:00 PM - 10:00 PM",
+                    thursday: "5:00 PM - 10:00 PM",
+                    friday: "5:00 PM - 11:00 PM",
+                    saturday: "4:00 PM - 11:00 PM",
+                    sunday: "4:00 PM - 9:00 PM"
+                },
+                products: [
+                    { name: "Salmon Sashimi", price: 18.99 },
+                    { name: "Dragon Roll", price: 16.99 },
+                    { name: "Omakase Experience", price: 85.00 },
+                    { name: "Miso Soup", price: 4.99 }
+                ]
+            },
+            {
+                id: 12,
+                name: "Urban Barber Co.",
+                rating: 4.7,
+                image: "✂️",
+                category: "barber",
+                description: "Traditional barbershop experience with modern styling techniques and premium grooming services.",
+                address: "963 Style Street, Grooming District, Barber Row 12356",
+                phone: "(555) 222-3333",
+                email: "bookings@urbanbarber.com",
+                hours: {
+                    monday: "9:00 AM - 7:00 PM",
+                    tuesday: "9:00 AM - 7:00 PM",
+                    wednesday: "9:00 AM - 7:00 PM",
+                    thursday: "9:00 AM - 8:00 PM",
+                    friday: "9:00 AM - 8:00 PM",
+                    saturday: "8:00 AM - 6:00 PM",
+                    sunday: "10:00 AM - 4:00 PM"
+                },
+                products: [
+                    { name: "Classic Haircut", price: 35.00 },
+                    { name: "Beard Trim & Style", price: 25.00 },
+                    { name: "Hot Towel Shave", price: 45.00 },
+                    { name: "Grooming Package", price: 65.00 }
+                ]
+            },
+            {
+                id: 13,
+                name: "Melody Music Store",
+                rating: 4.6,
+                image: "🎸",
+                category: "music",
+                description: "Musical instruments, equipment, and lessons for musicians of all skill levels.",
+                address: "174 Harmony Avenue, Arts District, Music Square 12357",
+                phone: "(555) 333-4444",
+                email: "info@melodymusic.com",
+                hours: {
+                    monday: "10:00 AM - 8:00 PM",
+                    tuesday: "10:00 AM - 8:00 PM",
+                    wednesday: "10:00 AM - 8:00 PM",
+                    thursday: "10:00 AM - 9:00 PM",
+                    friday: "10:00 AM - 9:00 PM",
+                    saturday: "9:00 AM - 8:00 PM",
+                    sunday: "11:00 AM - 6:00 PM"
+                },
+                products: [
+                    { name: "Acoustic Guitar", price: 299.99 },
+                    { name: "Piano Lessons (4 sessions)", price: 120.00 },
+                    { name: "Drum Set", price: 599.99 },
+                    { name: "Guitar Strings Set", price: 12.99 }
+                ]
+            },
+            {
+                id: 14,
+                name: "Golden Spoon Restaurant",
+                rating: 4.8,
+                image: "🍽️",
+                category: "restaurant",
+                description: "Fine dining experience with contemporary cuisine and exceptional service in elegant atmosphere.",
+                address: "285 Gourmet Lane, Culinary District, Fine Dining Plaza 12358",
+                phone: "(555) 444-5555",
+                email: "reservations@goldenspoon.com",
+                hours: {
+                    monday: "Closed",
+                    tuesday: "5:30 PM - 10:00 PM",
+                    wednesday: "5:30 PM - 10:00 PM",
+                    thursday: "5:30 PM - 10:00 PM",
+                    friday: "5:30 PM - 11:00 PM",
+                    saturday: "5:00 PM - 11:00 PM",
+                    sunday: "5:00 PM - 9:00 PM"
+                },
+                products: [
+                    { name: "Chef's Tasting Menu", price: 95.00 },
+                    { name: "Wagyu Steak", price: 68.00 },
+                    { name: "Lobster Thermidor", price: 52.00 },
+                    { name: "Wine Pairing", price: 45.00 }
+                ]
+            },
+            {
+                id: 15,
+                name: "Bright Smile Dental",
+                rating: 4.9,
+                image: "🦷",
+                category: "dental",
+                description: "Complete dental care with modern technology and gentle, professional treatment for the whole family.",
+                address: "396 Health Boulevard, Medical District, Dental Center 12359",
+                phone: "(555) 555-6666",
+                email: "appointments@brightsmile.com",
+                hours: {
+                    monday: "8:00 AM - 5:00 PM",
+                    tuesday: "8:00 AM - 5:00 PM",
+                    wednesday: "8:00 AM - 5:00 PM",
+                    thursday: "8:00 AM - 6:00 PM",
+                    friday: "8:00 AM - 4:00 PM",
+                    saturday: "9:00 AM - 2:00 PM",
+                    sunday: "Closed"
+                },
+                products: [
+                    { name: "Dental Cleaning", price: 125.00 },
+                    { name: "Teeth Whitening", price: 299.99 },
+                    { name: "Dental Exam", price: 89.99 },
+                    { name: "Emergency Visit", price: 199.99 }
+                ]
+            },
+            {
+                id: 16,
+                name: "Craft Beer Brewery",
+                rating: 4.5,
+                image: "🍺",
+                category: "brewery",
+                description: "Local craft brewery with unique seasonal beers and cozy taproom atmosphere.",
+                address: "507 Brewery Street, Craft District, Hops Avenue 12360",
+                phone: "(555) 666-7777",
+                email: "taproom@craftbeer.com",
+                hours: {
+                    monday: "Closed",
+                    tuesday: "4:00 PM - 10:00 PM",
+                    wednesday: "4:00 PM - 10:00 PM",
+                    thursday: "4:00 PM - 11:00 PM",
+                    friday: "3:00 PM - 12:00 AM",
+                    saturday: "12:00 PM - 12:00 AM",
+                    sunday: "12:00 PM - 8:00 PM"
+                },
+                products: [
+                    { name: "IPA Flight (4 beers)", price: 16.99 },
+                    { name: "Growler Fill", price: 18.99 },
+                    { name: "Brewery Tour", price: 12.00 },
+                    { name: "Beer & Pretzel Combo", price: 14.99 }
+                ]
+            },
+            {
+                id: 17,
+                name: "Zen Yoga Studio",
+                rating: 4.8,
+                image: "🧘",
+                category: "yoga",
+                description: "Peaceful yoga studio offering classes for all levels in a serene, mindful environment.",
+                address: "618 Tranquil Way, Wellness District, Mindfulness Plaza 12361",
+                phone: "(555) 777-8888",
+                email: "namaste@zenyoga.com",
+                hours: {
+                    monday: "6:00 AM - 9:00 PM",
+                    tuesday: "6:00 AM - 9:00 PM",
+                    wednesday: "6:00 AM - 9:00 PM",
+                    thursday: "6:00 AM - 9:00 PM",
+                    friday: "6:00 AM - 8:00 PM",
+                    saturday: "7:00 AM - 6:00 PM",
+                    sunday: "8:00 AM - 7:00 PM"
+                },
+                products: [
+                    { name: "Drop-in Class", price: 22.00 },
+                    { name: "Monthly Unlimited", price: 129.99 },
+                    { name: "Private Session", price: 85.00 },
+                    { name: "Yoga Mat & Props", price: 45.99 }
+                ]
+            },
+            {
+                id: 18,
+                name: "Artisan Jewelry Studio",
+                rating: 4.7,
+                image: "💎",
+                category: "jewelry",
+                description: "Handcrafted jewelry and custom designs using precious metals and gemstones.",
+                address: "729 Sparkle Street, Artisan Quarter, Gem District 12362",
+                phone: "(555) 888-9999",
+                email: "custom@artisanjewelry.com",
+                hours: {
+                    monday: "10:00 AM - 6:00 PM",
+                    tuesday: "10:00 AM - 6:00 PM",
+                    wednesday: "10:00 AM - 6:00 PM",
+                    thursday: "10:00 AM - 7:00 PM",
+                    friday: "10:00 AM - 7:00 PM",
+                    saturday: "10:00 AM - 5:00 PM",
+                    sunday: "12:00 PM - 4:00 PM"
+                },
+                products: [
+                    { name: "Custom Ring Design", price: 899.99 },
+                    { name: "Silver Necklace", price: 125.00 },
+                    { name: "Earring Set", price: 89.99 },
+                    { name: "Jewelry Repair", price: 45.00 }
+                ]
+            },
+            {
+                id: 19,
+                name: "Mountain Bike Shop",
+                rating: 4.6,
+                image: "🚴",
+                category: "bikes",
+                description: "Premium bicycles, gear, and expert repair services for cycling enthusiasts.",
+                address: "830 Cycle Path, Sports District, Bike Boulevard 12363",
+                phone: "(555) 999-0000",
+                email: "ride@mountainbike.com",
+                hours: {
+                    monday: "10:00 AM - 7:00 PM",
+                    tuesday: "10:00 AM - 7:00 PM",
+                    wednesday: "10:00 AM - 7:00 PM",
+                    thursday: "10:00 AM - 8:00 PM",
+                    friday: "10:00 AM - 8:00 PM",
+                    saturday: "9:00 AM - 6:00 PM",
+                    sunday: "11:00 AM - 5:00 PM"
+                },
+                products: [
+                    { name: "Mountain Bike", price: 1299.99 },
+                    { name: "Bike Tune-up", price: 75.00 },
+                    { name: "Cycling Helmet", price: 89.99 },
+                    { name: "Bike Accessories Kit", price: 45.99 }
+                ]
+            },
+            {
+                id: 20,
+                name: "Gourmet Ice Cream",
+                rating: 4.8,
+                image: "🍦",
+                category: "dessert",
+                description: "Artisanal ice cream made fresh daily with premium ingredients and unique flavors.",
+                address: "941 Sweet Street, Dessert District, Ice Cream Lane 12364",
+                phone: "(555) 000-1111",
+                email: "scoops@gourmeticecream.com",
+                hours: {
+                    monday: "12:00 PM - 9:00 PM",
+                    tuesday: "12:00 PM - 9:00 PM",
+                    wednesday: "12:00 PM - 9:00 PM",
+                    thursday: "12:00 PM - 9:00 PM",
+                    friday: "12:00 PM - 10:00 PM",
+                    saturday: "11:00 AM - 10:00 PM",
+                    sunday: "11:00 AM - 9:00 PM"
+                },
+                products: [
+                    { name: "Premium Scoop", price: 4.99 },
+                    { name: "Ice Cream Sundae", price: 8.99 },
+                    { name: "Pint to Go", price: 12.99 },
+                    { name: "Ice Cream Cake", price: 29.99 }
+                ]
+            }
+        ];
+
+        // Shuffle function
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        // Shuffle businesses on page load
+        const businesses = shuffleArray(businessesData);
+
+        // Helper function to check if business is currently open
+        function isBusinessOpen(business) {
+            const now = new Date();
+            const currentDay = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][now.getDay()];
+            const currentTime = now.getHours() * 60 + now.getMinutes(); // Convert to minutes
+            
+            const todayHours = business.hours[currentDay];
+            if (todayHours === "Closed") return false;
+            
+            const [openTime, closeTime] = todayHours.split(' - ');
+            
+            function timeToMinutes(timeStr) {
+                const [time, period] = timeStr.split(' ');
+                const [hours, minutes] = time.split(':').map(Number);
+                let totalMinutes = hours * 60 + minutes;
+                if (period === 'PM' && hours !== 12) totalMinutes += 12 * 60;
+                if (period === 'AM' && hours === 12) totalMinutes = minutes;
+                return totalMinutes;
+            }
+            
+            const openMinutes = timeToMinutes(openTime);
+            const closeMinutes = timeToMinutes(closeTime);
+            
+            return currentTime >= openMinutes && currentTime <= closeMinutes;
+        }
+
+        // Helper function to get next opening time
+        function getNextOpenTime(business) {
+            const now = new Date();
+            const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+            
+            for (let i = 0; i < 7; i++) {
+                const checkDay = (now.getDay() + i) % 7;
+                const dayName = days[checkDay];
+                const hours = business.hours[dayName];
+                
+                if (hours !== "Closed") {
+                    if (i === 0) {
+                        // Today - check if still time to open
+                        const [openTime] = hours.split(' - ');
+                        return `Opens ${openTime} today`;
+                    } else if (i === 1) {
+                        const [openTime] = hours.split(' - ');
+                        return `Opens ${openTime} tomorrow`;
+                    } else {
+                        const [openTime] = hours.split(' - ');
+                        return `Opens ${openTime} on ${dayName.charAt(0).toUpperCase() + dayName.slice(1)}`;
+                    }
+                }
+            }
+            return "Hours not available";
+        }
+
+        // Favorites functionality
+        function toggleFavorite(businessId) {
+            const index = favorites.indexOf(businessId);
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                favorites.push(businessId);
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            
+            // Update UI
+            if (currentPage === 'find-store') {
+                loadBusinesses(document.getElementById('businessSearch').value);
+            } else if (currentPage === 'home') {
+                loadFeaturedBusinesses();
+            } else if (currentPage === 'favorites') {
+                loadFavoriteBusinesses();
+            }
+        }
+
+        function isFavorite(businessId) {
+            return favorites.includes(businessId);
+        }
+
+        // Navigation functionality
+        function showPage(pageId) {
+            // Special handling for account - show modal instead of page
+            if (pageId === 'account') {
+                showAccountModal();
+                return;
+            }
+            
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            const targetPage = document.getElementById(pageId + '-page');
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Show/hide main banner - only visible on home page
+            const mainBanner = document.getElementById('mainBanner');
+            if (mainBanner) {
+                if (pageId === 'home') {
+                    mainBanner.style.display = 'block';
+                } else {
+                    mainBanner.style.display = 'none';
+                }
+            }
+            
+            // Update navigation buttons - handle both nav buttons and other buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Find and activate the correct nav button
+            const navButton = document.querySelector(`.nav-btn[data-page="${pageId}"]`);
+            if (navButton) {
+                navButton.classList.add('active');
+            }
+            
+            // Special handling for cart icon
+            if (pageId === 'cart') {
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+            
+            currentPage = pageId;
+            
+            // Load page-specific content
+            if (pageId === 'find-store') {
+                loadBusinesses();
+            } else if (pageId === 'home') {
+                loadFeaturedBusinesses();
+            } else if (pageId === 'favorites') {
+                loadFavoriteBusinesses();
+            }
+            
+            // Scroll to top when changing pages
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Account modal functions
+        function showAccountModal() {
+            document.getElementById('accountModal').classList.add('active');
+        }
+
+        function closeAccountModal() {
+            document.getElementById('accountModal').classList.remove('active');
+        }
+
+        // Load businesses into the grid
+        function loadBusinesses(searchTerm = '', filterCategory = 'all', sortByDistanceFlag = false) {
+            const grid = document.getElementById('businessesGrid');
+            
+            // Category mapping
+            const categoryMap = {
+                'restaurant': ['pizza', 'cafe', 'bakery', 'sushi', 'restaurant', 'brewery', 'dessert'],
+                'service': ['tech', 'flowers', 'cleaning', 'barber', 'dental', 'fitness', 'yoga'],
+                'retail': ['books', 'fashion', 'pets', 'music', 'jewelry', 'bikes'],
+                'health': ['dental', 'fitness', 'yoga']
+            };
+            
+            let filteredBusinesses = businesses.filter(business => {
+                // Apply category filter
+                if (filterCategory !== 'all') {
+                    const allowedCategories = categoryMap[filterCategory] || [];
+                    if (!allowedCategories.includes(business.category)) {
+                        return false;
+                    }
+                }
+                
+                // Apply search filter
+                if (searchTerm) {
+                    return business.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           business.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           business.products.some(product => 
+                               product.name.toLowerCase().includes(searchTerm.toLowerCase())
+                           );
+                }
+                
+                return true;
+            });
+
+            // Add distance calculation and sorting
+            if (userLocation) {
+                filteredBusinesses = filteredBusinesses.map(business => ({
+                    ...business,
+                    distance: calculateDistance(
+                        userLocation.lat, 
+                        userLocation.lng, 
+                        business.coordinates?.lat || 40.7589, 
+                        business.coordinates?.lng || -73.9851
+                    )
+                }));
+
+                if (sortByDistanceFlag) {
+                    filteredBusinesses.sort((a, b) => a.distance - b.distance);
+                }
+            }
+
+            grid.innerHTML = filteredBusinesses.map(business => {
+                const isOpen = isBusinessOpen(business);
+                const statusText = isOpen ? 'Open now' : getNextOpenTime(business);
+                const statusColor = isOpen ? '#4caf50' : '#ff9800';
+                const heartIcon = isFavorite(business.id) ? '❤️' : '🤍';
+                const distanceText = business.distance ? `📏 ${business.distance.toFixed(1)} km away` : '';
+                
+                return `
+                <div class="business-card" onclick="showBusinessDetails(${business.id})" style="position: relative; cursor: pointer;">
+                    <button onclick="event.stopPropagation(); toggleFavorite(${business.id})" style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); border: none; font-size: 1.5rem; cursor: pointer; z-index: 10; padding: 8px; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">${heartIcon}</button>
+                    ${distanceText ? `<div style="position: absolute; top: 10px; left: 10px; background: rgba(33, 150, 243, 0.9); color: white; padding: 0.3rem 0.6rem; border-radius: 15px; font-size: 0.7rem; font-weight: 600; z-index: 10;">${distanceText}</div>` : ''}
+                    <div class="business-image ${business.category}">${business.image}</div>
+                    <div class="business-info">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+                            <h3 class="business-name">${business.name}</h3>
+                            <span style="color: ${statusColor}; font-size: 0.8rem; font-weight: 600; background: rgba(255,255,255,0.9); padding: 0.2rem 0.5rem; border-radius: 10px; white-space: nowrap;">${statusText}</span>
+                        </div>
+                        <div class="business-rating">
+                            <span class="stars">${'★'.repeat(Math.floor(business.rating))}${'☆'.repeat(5 - Math.floor(business.rating))}</span>
+                            <span class="rating-text">(${business.rating}/5 • ${Math.floor(Math.random() * 200 + 50)} reviews)</span>
+                        </div>
+                        <p class="business-preview">${business.description.substring(0, 100)}...</p>
+                        ${distanceText ? `<div style="color: #2196f3; font-size: 0.9rem; font-weight: 600; margin-top: 0.5rem;">${distanceText}</div>` : ''}
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        // Load featured businesses for home page
+        function loadFeaturedBusinesses() {
+            const grid = document.getElementById('featuredBusinesses');
+            const featuredBusinesses = businesses.slice(0, 6); // Show first 6 businesses
+
+            grid.innerHTML = featuredBusinesses.map(business => {
+                const isOpen = isBusinessOpen(business);
+                const statusText = isOpen ? 'Open now' : getNextOpenTime(business);
+                const statusColor = isOpen ? '#4caf50' : '#ff9800';
+                const heartIcon = isFavorite(business.id) ? '❤️' : '🤍';
+                
+                return `
+                <div class="business-card" onclick="showBusinessDetails(${business.id})" style="position: relative; cursor: pointer;">
+                    <button onclick="event.stopPropagation(); toggleFavorite(${business.id})" style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); border: none; font-size: 1.5rem; cursor: pointer; z-index: 10; padding: 8px; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">${heartIcon}</button>
+                    <div class="business-image ${business.category}">${business.image}</div>
+                    <div class="business-info">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+                            <h3 class="business-name">${business.name}</h3>
+                            <span style="color: ${statusColor}; font-size: 0.8rem; font-weight: 600; background: rgba(255,255,255,0.9); padding: 0.2rem 0.5rem; border-radius: 10px; white-space: nowrap;">${statusText}</span>
+                        </div>
+                        <div class="business-rating">
+                            <span class="stars">${'★'.repeat(Math.floor(business.rating))}${'☆'.repeat(5 - Math.floor(business.rating))}</span>
+                            <span class="rating-text">(${business.rating}/5 • ${Math.floor(Math.random() * 200 + 50)} reviews)</span>
+                        </div>
+                        <p class="business-preview">${business.description.substring(0, 100)}...</p>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        // Load favorite businesses for favorites page
+        function loadFavoriteBusinesses() {
+            const grid = document.getElementById('favoritesGrid');
+            const favoriteBusinesses = businesses.filter(business => favorites.includes(business.id));
+
+            if (favoriteBusinesses.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: #666;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">💔</div>
+                        <h3 style="margin-bottom: 1rem; color: #e91e63;">No favorites yet!</h3>
+                        <p>Start exploring businesses and click the heart icon to add them to your favorites.</p>
+                        <button onclick="showPage('find-store')" style="background: #e91e63; color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-weight: 600; cursor: pointer; margin-top: 1rem; font-family: 'Nunito', sans-serif;">Discover Businesses</button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = favoriteBusinesses.map(business => {
+                const isOpen = isBusinessOpen(business);
+                const statusText = isOpen ? 'Open now' : getNextOpenTime(business);
+                const statusColor = isOpen ? '#4caf50' : '#ff9800';
+                const heartIcon = '❤️'; // Always filled heart on favorites page
+                
+                return `
+                <div class="business-card" onclick="showBusinessDetails(${business.id})" style="position: relative; cursor: pointer;">
+                    <button onclick="event.stopPropagation(); toggleFavorite(${business.id})" style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); border: none; font-size: 1.5rem; cursor: pointer; z-index: 10; padding: 8px; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">${heartIcon}</button>
+                    <div class="business-image ${business.category}">${business.image}</div>
+                    <div class="business-info">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+                            <h3 class="business-name">${business.name}</h3>
+                            <span style="color: ${statusColor}; font-size: 0.8rem; font-weight: 600; background: rgba(255,255,255,0.9); padding: 0.2rem 0.5rem; border-radius: 10px; white-space: nowrap;">${statusText}</span>
+                        </div>
+                        <div class="business-rating">
+                            <span class="stars">${'★'.repeat(Math.floor(business.rating))}${'☆'.repeat(5 - Math.floor(business.rating))}</span>
+                            <span class="rating-text">(${business.rating}/5 • ${Math.floor(Math.random() * 200 + 50)} reviews)</span>
+                        </div>
+                        <p class="business-preview">${business.description.substring(0, 100)}...</p>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        // Show business details in modal
+        function showBusinessDetails(businessId) {
+            const business = businesses.find(b => b.id === businessId);
+            if (!business) return;
+
+            const isOpen = isBusinessOpen(business);
+            const statusText = isOpen ? 'Open now' : getNextOpenTime(business);
+            const statusColor = isOpen ? '#4caf50' : '#ff9800';
+            
+            document.getElementById('modalBusinessName').textContent = business.name;
+            document.getElementById('modalStars').textContent = '★'.repeat(Math.floor(business.rating)) + '☆'.repeat(5 - Math.floor(business.rating));
+            document.getElementById('modalRating').innerHTML = `(${business.rating}/5) • <span style="color: ${statusColor}; font-weight: 600;">${statusText}</span>`;
+            
+            // Clear any existing content and rebuild modal body
+            const modalBody = document.getElementById('modalBody');
+            const currentDay = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][new Date().getDay()];
+            
+            modalBody.innerHTML = `
+                <p style="color: #666; line-height: 1.6; margin-bottom: 2rem;">${business.description}</p>
+                
+                <!-- Contact Information -->
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem; color: #e91e63; font-size: 1.2rem;">📍 Contact & Location</h3>
+                    <div style="display: grid; gap: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.8rem;">
+                            <span style="font-size: 1.1rem;">📍</span>
+                            <span style="color: #666;">${business.address}</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem;">
+                            <span style="font-size: 1.1rem;">📞</span>
+                            <span style="color: #666;">${business.phone}</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem;">
+                            <span style="font-size: 1.1rem;">✉️</span>
+                            <span style="color: #666;">${business.email}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule Section -->
+                <div style="margin-bottom: 2rem;">
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                        <button onclick="toggleSchedule()" id="scheduleToggleBtn" style="background: #e91e63; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer;">📅 See Schedule</button>
+                        <button onclick="getDirections('${business.address}')" style="background: #2196f3; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer;">🧭 Get Directions</button>
+                    </div>
+                    <div id="scheduleSection" style="display: none; background: #f8f9fa; padding: 1.5rem; border-radius: 15px;">
+                        <h3 style="margin-bottom: 1rem; color: #e91e63; font-size: 1.2rem;">🕒 Business Hours</h3>
+                        <div style="display: grid; gap: 0.5rem; font-size: 0.95rem;">
+                            ${Object.entries(business.hours).map(([day, hours]) => `
+                                <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee; ${day === currentDay ? 'font-weight: bold; color: #e91e63; background: rgba(233, 30, 99, 0.1); padding: 0.5rem; border-radius: 8px; border-bottom: none;' : 'color: #666;'}">
+                                    <span>${day.charAt(0).toUpperCase() + day.slice(1)}</span>
+                                    <span>${hours}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Section -->
+                <h3 style="margin-bottom: 1rem; color: #e91e63; font-size: 1.2rem;">🛍️ Products & Services</h3>
+                <div class="products-grid" id="modalProducts">
+                    ${business.products.map((product, index) => {
+                        const safeBusinessName = business.name.replace(/'/g, "\\'");
+                        const safeProductName = product.name.replace(/'/g, "\\'");
+                        return `
+                        <div class="product-item" onclick="showProductPreview('${safeBusinessName}', '${safeProductName}', ${product.price}, '${business.category}', ${index})" style="cursor: pointer; transition: transform 0.2s ease;">
+                            <div class="product-image" style="width: 100%; height: 120px; background: linear-gradient(135deg, #ff6b6b, #4ecdc4); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; margin-bottom: 1rem; position: relative; overflow: hidden;">
+                                ${getProductEmoji(business.category, product.name)}
+                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Cdefs%3E%3Cpattern id=%22dots%22 width=%2210%22 height=%2210%22 patternUnits=%22userSpaceOnUse%22%3E%3Ccircle cx=%225%22 cy=%225%22 r=%221%22 fill=%22rgba(255,255,255,0.2)%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect width=%22100%22 height=%22100%22 fill=%22url(%23dots)%22/%3E%3C/svg%3E'); opacity: 0.3;"></div>
+                            </div>
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-price">$${product.price}</div>
+                            <button class="auth-btn" style="margin-top: 0.5rem; padding: 0.5rem 1rem; font-size: 0.9rem;" onclick="event.stopPropagation(); addToCart('${safeBusinessName}', '${safeProductName}', ${product.price})">Add to Cart</button>
+                        </div>
+                    `;
+                    }).join('')}
+                </div>
+            `;
+
+            document.getElementById('businessModal').classList.add('active');
+        }
+
+        // Toggle schedule visibility
+        function toggleSchedule() {
+            const scheduleSection = document.getElementById('scheduleSection');
+            const button = event.target;
+            
+            if (scheduleSection.style.display === 'none') {
+                scheduleSection.style.display = 'block';
+                button.textContent = '📅 Hide Schedule';
+            } else {
+                scheduleSection.style.display = 'none';
+                button.textContent = '📅 See Schedule';
+            }
+        }
+
+        // Get directions to business
+        function getDirections(businessAddress) {
+            if (!businessAddress) {
+                showToast('❌ Business address not available', 'error');
+                return;
+            }
+
+            // Encode the address for URL
+            const encodedAddress = encodeURIComponent(businessAddress);
+            
+            // Check if user has location for more accurate directions
+            if (userLocation) {
+                // Use user's current location as starting point
+                const directionsUrl = `https://www.google.com/maps/dir/${userLocation.lat},${userLocation.lng}/${encodedAddress}`;
+                window.open(directionsUrl, '_blank', 'noopener,noreferrer');
+                showToast('🧭 Opening GPS directions from your location...', 'success');
+            } else {
+                // Open Google Maps with just the destination
+                const mapsUrl = `https://www.google.com/maps/search/${encodedAddress}`;
+                window.open(mapsUrl, '_blank', 'noopener,noreferrer');
+                showToast('🗺️ Opening business location in Google Maps...', 'success');
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('businessModal').classList.remove('active');
+        }
+
+        // Product preview functionality
+        let currentProduct = null;
+
+        function getProductEmoji(category, productName) {
+            const productLower = productName.toLowerCase();
+            
+            // Food categories
+            if (category === 'pizza' || productLower.includes('pizza')) return '🍕';
+            if (category === 'sushi' || productLower.includes('sushi') || productLower.includes('sashimi') || productLower.includes('roll')) return '🍣';
+            if (category === 'bakery' || productLower.includes('bread') || productLower.includes('croissant') || productLower.includes('cake') || productLower.includes('danish')) return '🥖';
+            if (category === 'cafe' || productLower.includes('coffee') || productLower.includes('smoothie') || productLower.includes('toast') || productLower.includes('bowl')) return '☕';
+            if (category === 'restaurant' || productLower.includes('steak') || productLower.includes('lobster') || productLower.includes('menu') || productLower.includes('wine')) return '🍽️';
+            if (category === 'brewery' || productLower.includes('beer') || productLower.includes('ipa') || productLower.includes('growler') || productLower.includes('pretzel')) return '🍺';
+            if (category === 'dessert' || productLower.includes('ice cream') || productLower.includes('scoop') || productLower.includes('sundae')) return '🍦';
+            
+            // Service categories
+            if (category === 'tech' || productLower.includes('repair') || productLower.includes('phone') || productLower.includes('laptop') || productLower.includes('data')) return '🔧';
+            if (category === 'barber' || productLower.includes('haircut') || productLower.includes('beard') || productLower.includes('shave') || productLower.includes('grooming')) return '✂️';
+            if (category === 'dental' || productLower.includes('dental') || productLower.includes('teeth') || productLower.includes('cleaning') || productLower.includes('exam')) return '🦷';
+            if (category === 'fitness' || productLower.includes('membership') || productLower.includes('training') || productLower.includes('class') || productLower.includes('nutrition')) return '💪';
+            if (category === 'yoga' || productLower.includes('yoga') || productLower.includes('class') || productLower.includes('session') || productLower.includes('mat')) return '🧘';
+            if (category === 'cleaning' || productLower.includes('cleaning') || productLower.includes('house') || productLower.includes('office') || productLower.includes('move')) return '🧽';
+            
+            // Retail categories
+            if (category === 'flowers' || productLower.includes('flower') || productLower.includes('bouquet') || productLower.includes('arrangement') || productLower.includes('plant')) return '🌸';
+            if (category === 'books' || productLower.includes('book') || productLower.includes('fiction') || productLower.includes('author') || productLower.includes('club')) return '📚';
+            if (category === 'fashion' || productLower.includes('vintage') || productLower.includes('jacket') || productLower.includes('shirt') || productLower.includes('bag')) return '👕';
+            if (category === 'pets' || productLower.includes('pet') || productLower.includes('dog') || productLower.includes('grooming') || productLower.includes('vet')) return '🐕';
+            if (category === 'music' || productLower.includes('guitar') || productLower.includes('piano') || productLower.includes('drum') || productLower.includes('lesson')) return '🎸';
+            if (category === 'jewelry' || productLower.includes('ring') || productLower.includes('necklace') || productLower.includes('earring') || productLower.includes('jewelry')) return '💎';
+            if (category === 'bikes' || productLower.includes('bike') || productLower.includes('bicycle') || productLower.includes('cycling') || productLower.includes('helmet')) return '🚴';
+            
+            // Default emojis by category
+            const categoryDefaults = {
+                'pizza': '🍕', 'cafe': '☕', 'tech': '🔧', 'flowers': '🌸', 'books': '📚', 'bakery': '🥖',
+                'fitness': '💪', 'fashion': '👕', 'pets': '🐕', 'cleaning': '🧽', 'sushi': '🍣',
+                'barber': '✂️', 'music': '🎸', 'restaurant': '🍽️', 'dental': '🦷', 'brewery': '🍺',
+                'yoga': '🧘', 'jewelry': '💎', 'bikes': '🚴', 'dessert': '🍦'
+            };
+            
+            return categoryDefaults[category] || '🛍️';  
+        }
+
+        function showProductPreview(businessName, productName, price, category, index) {
+            currentProduct = { businessName, productName, price, category, index };
+            
+            document.getElementById('productModalName').textContent = productName;
+            document.getElementById('productModalBusiness').textContent = businessName;
+            document.getElementById('productModalPrice').textContent = `$${price}`;
+            
+            // Set product image with appropriate emoji and gradient
+            const productImage = document.getElementById('productModalImage');
+            const emoji = getProductEmoji(category, productName);
+            
+            // Different gradients for different categories
+            const gradients = {
+                'pizza': 'linear-gradient(135deg, #ff6b6b, #ff8e53)',
+                'cafe': 'linear-gradient(135deg, #4ecdc4, #44a08d)',
+                'tech': 'linear-gradient(135deg, #667eea, #764ba2)',
+                'flowers': 'linear-gradient(135deg, #ffecd2, #fcb69f)',
+                'books': 'linear-gradient(135deg, #a8edea, #fed6e3)',
+                'bakery': 'linear-gradient(135deg, #feca57, #ff9ff3)',
+                'fitness': 'linear-gradient(135deg, #ff9a9e, #fecfef)',
+                'fashion': 'linear-gradient(135deg, #a18cd1, #fbc2eb)',
+                'pets': 'linear-gradient(135deg, #fad0c4, #ffd1ff)',
+                'cleaning': 'linear-gradient(135deg, #84fab0, #8fd3f4)',
+                'sushi': 'linear-gradient(135deg, #fa709a, #fee140)',
+                'barber': 'linear-gradient(135deg, #43e97b, #38f9d7)',
+                'music': 'linear-gradient(135deg, #4facfe, #00f2fe)',
+                'restaurant': 'linear-gradient(135deg, #f093fb, #f5576c)',
+                'dental': 'linear-gradient(135deg, #4facfe, #00f2fe)',
+                'brewery': 'linear-gradient(135deg, #f6d365, #fda085)',
+                'yoga': 'linear-gradient(135deg, #d299c2, #fef9d7)',
+                'jewelry': 'linear-gradient(135deg, #89f7fe, #66a6ff)',
+                'bikes': 'linear-gradient(135deg, #fdbb2d, #22c1c3)',
+                'dessert': 'linear-gradient(135deg, #ff9a9e, #fecfef)'
+            };
+            
+            productImage.style.background = gradients[category] || 'linear-gradient(135deg, #ff6b6b, #4ecdc4)';
+            productImage.innerHTML = `
+                ${emoji}
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grid\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"rgba(255,255,255,0.1)\" stroke-width=\"1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grid)\"/></svg>'); opacity: 0.3;"></div>
+            `;
+            
+            // Set description based on category and product
+            const descriptions = {
+                'pizza': 'Freshly made with premium ingredients and traditional recipes. Crispy crust, perfect sauce, and the finest toppings.',
+                'cafe': 'Made with organic, locally-sourced ingredients. Fresh, healthy, and delicious.',
+                'tech': 'Professional service with quick turnaround. Expert technicians and quality parts guaranteed.',
+                'flowers': 'Fresh, beautiful flowers arranged with care. Perfect for any special occasion.',
+                'books': 'Carefully curated selection. Perfect for book lovers and gift giving.',
+                'bakery': 'Handcrafted daily using traditional methods and the finest ingredients.',
+                'fitness': 'Professional fitness services to help you reach your health and wellness goals.',
+                'fashion': 'Unique, high-quality vintage pieces with character and style.',
+                'pets': 'Premium pet care services and products for your furry family members.',
+                'cleaning': 'Professional cleaning services using eco-friendly products and methods.',
+                'sushi': 'Fresh, premium sushi prepared by master chefs with authentic techniques.',
+                'barber': 'Traditional barbering with modern techniques. Professional grooming services.',
+                'music': 'Quality instruments and expert instruction for musicians of all levels.',
+                'restaurant': 'Fine dining experience with exceptional ingredients and expert preparation.',
+                'dental': 'Professional dental care with modern technology and gentle treatment.',
+                'brewery': 'Craft beer made with premium ingredients and traditional brewing methods.',
+                'yoga': 'Mindful practice in a peaceful environment with expert instruction.',
+                'jewelry': 'Handcrafted jewelry using precious metals and quality gemstones.',
+                'bikes': 'Quality bicycles and expert service for cycling enthusiasts.',
+                'dessert': 'Artisanal desserts made fresh daily with premium ingredients.'
+            };
+            
+            document.getElementById('productModalDescription').innerHTML = `
+                <h3 style="color: #e91e63; margin-bottom: 1rem; font-size: 1.2rem;">About This Item</h3>
+                <p style="color: #666; line-height: 1.6;">${descriptions[category] || 'High-quality product with excellent service and attention to detail.'}</p>
+            `;
+            
+            document.getElementById('productModal').classList.add('active');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.remove('active');
+            currentProduct = null;
+        }
+
+        function addToCartFromPreview() {
+            if (currentProduct) {
+                addToCart(currentProduct.businessName, currentProduct.productName, currentProduct.price);
+                closeProductModal();
+            }
+        }
+
+        // Cart functionality
+        function addToCart(businessName, productName, price) {
+            const item = {
+                id: Date.now() + Math.random(),
+                businessName,
+                productName,
+                price: parseFloat(price),
+                quantity: 1
+            };
+            
+            // Check if item already exists
+            const existingItem = cart.find(cartItem => 
+                cartItem.businessName === businessName && cartItem.productName === productName
+            );
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push(item);
+            }
+            
+            updateCartDisplay();
+            
+            // Show success message
+            showToast(`${productName} added to cart! 🛒`);
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartBadge = document.getElementById('cartBadge');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartBadge.style.display = 'none';
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛒</div>
+                        <h3 style="color: #e91e63; margin-bottom: 1rem;">Your cart is empty</h3>
+                        <p>Start shopping to add items to your cart</p>
+                        <button onclick="showPage('find-store')" style="background: #e91e63; color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-weight: 600; cursor: pointer; margin-top: 1rem; font-family: 'Nunito', sans-serif;">Start Shopping</button>
+                    </div>
+                `;
+                cartTotal.style.display = 'none';
+            } else {
+                cartBadge.style.display = 'flex';
+                cartBadge.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+                
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-icon">${getProductEmoji('', item.productName)}</div>
+                            <div>
+                                <div style="font-weight: 600; color: #333;">${item.productName}</div>
+                                <div style="color: #666; font-size: 0.9rem;">${item.businessName}</div>
+                                <div style="color: #e91e63; font-weight: 600;">$${item.price} × ${item.quantity}</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <button onclick="updateQuantity(${item.id}, -1)" style="background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">-</button>
+                                <span style="font-weight: 600; min-width: 20px; text-align: center;">${item.quantity}</span>
+                                <button onclick="updateQuantity(${item.id}, 1)" style="background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">+</button>
+                            </div>
+                            <button onclick="removeFromCart(${item.id})" style="background: #ff4444; color: white; border: none; padding: 0.5rem; border-radius: 5px; cursor: pointer;">🗑️</button>
+                        </div>
+                    </div>
+                `).join('');
+                
+                cartTotal.style.display = 'none';
+            }
+        }
+
+        function updateQuantity(itemId, change) {
+            const item = cart.find(cartItem => cartItem.id === itemId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(itemId);
+                } else {
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) return;
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            showToast(`🎉 Checkout successful! ${itemCount} items for $${total.toFixed(2)}. Thank you for your order!`, 'success', 4000);
+            
+            // Clear cart after successful checkout
+            cart = [];
+            updateCartDisplay();
+        }
+
+        // Toast notification system
+        function showToast(message, type = 'info', duration = 3000) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#4caf50' : '#e91e63'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 10000;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 600;
+                max-width: 300px;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, duration);
+        }
+
+        // Add CSS animations for toast
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // GPS and Location Functions
+        function getCurrentLocation() {
+            const locationBtn = document.getElementById('locationBtn');
+            const locationStatus = document.getElementById('locationStatus');
+            const locationText = document.getElementById('locationText');
+            
+            locationBtn.innerHTML = '⏳ Getting Location...';
+            locationBtn.disabled = true;
+            
+            if (!navigator.geolocation) {
+                showLocationError('GPS not supported by this browser');
+                return;
+            }
+            
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    
+                    locationBtn.innerHTML = '✅ Location Found';
+                    locationBtn.style.background = '#4caf50';
+                    
+                    locationStatus.style.display = 'block';
+                    locationStatus.style.background = 'rgba(76, 175, 80, 0.1)';
+                    locationStatus.style.color = '#4caf50';
+                    locationText.textContent = `📍 Your location: ${userLocation.lat.toFixed(4)}, ${userLocation.lng.toFixed(4)}`;
+                    
+                    // Enable distance sorting
+                    document.getElementById('sortDistanceBtn').disabled = false;
+                    document.getElementById('sortDistanceBtn').style.opacity = '1';
+                    
+                    // Update business cards with distances
+                    loadBusinesses(document.getElementById('businessSearch')?.value || '');
+                    
+                    showToast('📍 Location found! You can now sort by distance.', 'success');
+                },
+                function(error) {
+                    let errorMessage = 'Unable to get your location';
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMessage = 'Location access denied by user';
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMessage = 'Location information unavailable';
+                            break;
+                        case error.TIMEOUT:
+                            errorMessage = 'Location request timed out';
+                            break;
+                    }
+                    showLocationError(errorMessage);
+                }
+            );
+        }
+
+        function showLocationError(message) {
+            const locationBtn = document.getElementById('locationBtn');
+            const locationStatus = document.getElementById('locationStatus');
+            const locationText = document.getElementById('locationText');
+            
+            locationBtn.innerHTML = '❌ Location Failed';
+            locationBtn.style.background = '#f44336';
+            locationBtn.disabled = false;
+            
+            locationStatus.style.display = 'block';
+            locationStatus.style.background = 'rgba(244, 67, 54, 0.1)';
+            locationStatus.style.color = '#f44336';
+            locationText.textContent = `❌ ${message}`;
+            
+            showToast(`GPS Error: ${message}`, 'error');
+        }
+
+        function calculateDistance(lat1, lng1, lat2, lng2) {
+            const R = 6371; // Earth's radius in kilometers
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLng = (lng2 - lng1) * Math.PI / 180;
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLng/2) * Math.sin(dLng/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return R * c; // Distance in kilometers
+        }
+
+        function sortByDistance() {
+            if (!userLocation) {
+                showToast('Please enable location first', 'error');
+                return;
+            }
+            
+            const searchTerm = document.getElementById('businessSearch')?.value || '';
+            const activeFilter = document.querySelector('.filter-tab.active')?.getAttribute('data-filter') || 'all';
+            
+            loadBusinesses(searchTerm, activeFilter, true);
+            showToast('📏 Businesses sorted by distance from your location', 'success');
+        }
+
+        function toggleMapView() {
+            const mapContainer = document.getElementById('mapContainer');
+            const mapToggleBtn = document.getElementById('mapToggleBtn');
+            
+            mapVisible = !mapVisible;
+            
+            if (mapVisible) {
+                mapContainer.style.display = 'block';
+                mapToggleBtn.innerHTML = '🗺️ Hide Map';
+                renderMap();
+            } else {
+                mapContainer.style.display = 'none';
+                mapToggleBtn.innerHTML = '🗺️ Show Map';
+            }
+        }
+
+        function renderMap() {
+            const mapDisplay = document.getElementById('mapDisplay');
+            
+            // Create a simple visual map representation
+            mapDisplay.innerHTML = `
+                <div style="position: relative; width: 100%; height: 100%; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #90caf9 100%);">
+                    <!-- Grid lines for map effect -->
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: 
+                        linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
+                        background-size: 50px 50px; opacity: 0.3;"></div>
+                    
+                    <!-- User location marker -->
+                    ${userLocation ? `
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                             background: #4caf50; color: white; padding: 0.5rem; border-radius: 50%; 
+                             box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4); z-index: 10;
+                             animation: pulse 2s infinite;">
+                            📍
+                        </div>
+                        <div style="position: absolute; top: 55%; left: 50%; transform: translateX(-50%);
+                             background: rgba(76, 175, 80, 0.9); color: white; padding: 0.3rem 0.8rem;
+                             border-radius: 15px; font-size: 0.8rem; font-weight: 600; z-index: 10;">
+                            You are here
+                        </div>
+                    ` : ''}
+                    
+                    <!-- Business markers -->
+                    <div id="businessMarkers">
+                        ${businesses.slice(0, 10).map((business, index) => {
+                            const angle = (index / 10) * 2 * Math.PI;
+                            const radius = 120 + (index % 3) * 40;
+                            const x = 50 + Math.cos(angle) * radius / 4;
+                            const y = 50 + Math.sin(angle) * radius / 4;
+                            
+                            const distance = userLocation ? 
+                                calculateDistance(userLocation.lat, userLocation.lng, business.coordinates?.lat || 40.7589, business.coordinates?.lng || -73.9851) : 0;
+                            
+                            return `
+                                <div onclick="showBusinessDetails(${business.id})" 
+                                     style="position: absolute; top: ${y}%; left: ${x}%; transform: translate(-50%, -50%);
+                                            background: white; border: 3px solid #e91e63; border-radius: 50%;
+                                            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+                                            cursor: pointer; box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+                                            transition: all 0.3s ease; z-index: 5;"
+                                     onmouseover="this.style.transform='translate(-50%, -50%) scale(1.2)'"
+                                     onmouseout="this.style.transform='translate(-50%, -50%) scale(1)'">
+                                    ${business.image}
+                                </div>
+                                <div style="position: absolute; top: ${y + 8}%; left: ${x}%; transform: translateX(-50%);
+                                     background: rgba(0,0,0,0.8); color: white; padding: 0.3rem 0.6rem;
+                                     border-radius: 10px; font-size: 0.7rem; white-space: nowrap; z-index: 5;
+                                     pointer-events: none;">
+                                    ${business.name}
+                                    ${userLocation ? `<br>📏 ${distance.toFixed(1)} km` : ''}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                    
+                    <!-- Map legend -->
+                    <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(255,255,255,0.9);
+                         padding: 0.8rem; border-radius: 10px; font-size: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+                            <span style="color: #4caf50;">📍</span> Your Location
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="color: #e91e63;">🏪</span> Businesses
+                        </div>
+                    </div>
+                </div>
+                
+                <style>
+                    @keyframes pulse {
+                        0% { box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4); }
+                        50% { box-shadow: 0 4px 20px rgba(76, 175, 80, 0.8); }
+                        100% { box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4); }
+                    }
+                </style>
+            `;
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation event listeners
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const page = this.getAttribute('data-page');
+                    showPage(page);
+                });
+            });
+
+            // Cart icon event listener
+            document.getElementById('cartIcon').addEventListener('click', function() {
+                showPage('cart');
+            });
+
+            // Account button event listener
+            document.querySelector('.account-btn').addEventListener('click', function() {
+                showPage('account');
+            });
+
+            // Search functionality
+            const searchInput = document.getElementById('businessSearch');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    loadBusinesses(this.value);
+                });
+            }
+
+            // Filter functionality
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    const searchTerm = document.getElementById('businessSearch')?.value || '';
+                    loadBusinesses(searchTerm, filter);
+                });
+            });
+
+            // Form submissions
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showToast('Form submitted successfully! 🎉');
+                });
+            });
+
+            // Initialize
+            loadFeaturedBusinesses();
+            updateCartDisplay();
+            
+            // Initialize SDK
+            if (window.elementSdk) {
+                window.elementSdk.init({
+                    defaultConfig,
+                    onConfigChange: async (newConfig) => {
+                        config = { ...config, ...newConfig };
+                        
+                        // Update logo text
+                        const logoElement = document.getElementById('logoText');
+                        if (logoElement) {
+                            logoElement.textContent = config.logo_text || defaultConfig.logo_text;
+                        }
+                        
+                        // Update hero text
+                        const heroElement = document.getElementById('heroText');
+                        if (heroElement) {
+                            heroElement.textContent = config.hero_text || defaultConfig.hero_text;
+                        }
+                        
+                        // Update tagline text
+                        const taglineElement = document.getElementById('taglineText');
+                        if (taglineElement) {
+                            taglineElement.textContent = config.tagline_text || defaultConfig.tagline_text;
+                        }
+                    },
+                    mapToCapabilities: (config) => ({
+                        recolorables: [],
+                        borderables: [],
+                        fontEditable: undefined,
+                        fontSizeable: undefined
+                    }),
+                    mapToEditPanelValues: (config) => new Map([
+                        ["logo_text", config.logo_text || defaultConfig.logo_text],
+                        ["hero_text", config.hero_text || defaultConfig.hero_text],
+                        ["tagline_text", config.tagline_text || defaultConfig.tagline_text]
+                    ])
+                });
+            }
+        });
+
+        // Add click handlers for navigation buttons (backup method)
+        function handleNavClick(event) {
+            const button = event.target.closest('.nav-btn, .account-btn, .icon-btn');
+            if (!button) return;
+            
+            const page = button.getAttribute('data-page');
+            if (page) {
+                showPage(page);
+            }
+        }
+
+        // Add event delegation for navigation
+        document.addEventListener('click', handleNavClick);
+
+        // Account creation step tracking
+        let currentAccountStep = 1;
+
+        // Business registration step functionality
+        function showForm(formType) {
+            document.querySelectorAll('.auth-form').forEach(form => {
+                form.classList.remove('active');
+            });
+            
+            if (formType === 'login') {
+                document.getElementById('loginForm').classList.add('active');
+            } else if (formType === 'createAccount') {
+                document.getElementById('createAccountForm').classList.add('active');
+                currentAccountStep = 1;
+                updateAccountStepDisplay();
+            } else if (formType === 'businessRegister') {
+                document.getElementById('businessRegisterForm').classList.add('active');
+                currentStep = 1;
+                updateStepDisplay();
+            }
+        }
+
+        // Account creation step functions
+        function changeAccountStep(direction) {
+            const totalSteps = 2;
+            currentAccountStep += direction;
+            
+            if (currentAccountStep < 1) currentAccountStep = 1;
+            if (currentAccountStep > totalSteps) currentAccountStep = totalSteps;
+            
+            updateAccountStepDisplay();
+        }
+
+        function updateAccountStepDisplay() {
+            // Hide all account steps
+            document.querySelectorAll('.account-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            // Show current account step
+            const currentStepElement = document.getElementById(`accountStep${currentAccountStep}`);
+            if (currentStepElement) {
+                currentStepElement.classList.add('active');
+            }
+            
+            // Update step indicators
+            for (let i = 1; i <= 2; i++) {
+                const indicator = document.getElementById(`accountStepIndicator${i}`);
+                if (indicator) {
+                    if (i === currentAccountStep) {
+                        indicator.style.background = '#e91e63';
+                        indicator.style.color = 'white';
+                    } else if (i < currentAccountStep) {
+                        indicator.style.background = '#4caf50';
+                        indicator.style.color = 'white';
+                    } else {
+                        indicator.style.background = '#e0e0e0';
+                        indicator.style.color = '#666';
+                    }
+                }
+            }
+            
+            // Update navigation buttons
+            const prevBtn = document.getElementById('accountPrevBtn');
+            const nextBtn = document.getElementById('accountNextBtn');
+            
+            if (prevBtn) {
+                prevBtn.disabled = currentAccountStep === 1;
+                prevBtn.style.opacity = currentAccountStep === 1 ? '0.5' : '1';
+            }
+            
+            if (nextBtn) {
+                if (currentAccountStep === 2) {
+                    nextBtn.style.display = 'none';
+                } else {
+                    nextBtn.style.display = 'block';
+                    nextBtn.disabled = false;
+                    nextBtn.style.opacity = '1';
+                }
+            }
+        }
+
+        function completeAccountCreation() {
+            const selectedPreferences = [];
+            document.querySelectorAll('input[name="preferences"]:checked').forEach(checkbox => {
+                selectedPreferences.push(checkbox.value);
+            });
+            
+            const username = document.getElementById('createUsername').value;
+            const email = document.getElementById('createEmail').value;
+            const address = document.getElementById('createAddress').value;
+            
+            showToast(`🎉 Welcome ${username}! Account created successfully with ${selectedPreferences.length} preferences selected.`, 'success', 4000);
+            closeAccountModal();
+        }
+
+        function changeStep(direction) {
+            const totalSteps = 3;
+            currentStep += direction;
+            
+            if (currentStep < 1) currentStep = 1;
+            if (currentStep > totalSteps) currentStep = totalSteps;
+            
+            updateStepDisplay();
+        }
+
+        function updateStepDisplay() {
+            // Hide all steps
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            // Show current step
+            const currentStepElement = document.getElementById(`step${currentStep}`);
+            if (currentStepElement) {
+                currentStepElement.classList.add('active');
+            }
+            
+            // Update step indicators
+            for (let i = 1; i <= 3; i++) {
+                const indicator = document.getElementById(`stepIndicator${i}`);
+                if (indicator) {
+                    if (i === currentStep) {
+                        indicator.style.background = '#e91e63';
+                        indicator.style.color = 'white';
+                    } else if (i < currentStep) {
+                        indicator.style.background = '#4caf50';
+                        indicator.style.color = 'white';
+                    } else {
+                        indicator.style.background = '#e0e0e0';
+                        indicator.style.color = '#666';
+                    }
+                }
+            }
+            
+            // Update navigation buttons
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (prevBtn) {
+                prevBtn.disabled = currentStep === 1;
+                prevBtn.style.opacity = currentStep === 1 ? '0.5' : '1';
+            }
+            
+            if (nextBtn) {
+                if (currentStep === 3) {
+                    nextBtn.style.display = 'none';
+                } else {
+                    nextBtn.style.display = 'block';
+                    nextBtn.disabled = false;
+                    nextBtn.style.opacity = '1';
+                }
+            }
+        }
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a81955161eea61c',t:'MTc2NDc0OTM4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+
