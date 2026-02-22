@@ -755,6 +755,117 @@
                 text-align: center;
             }
 
+            .locked-state-card {
+                grid-column: 1 / -1;
+                max-width: 760px;
+                width: 100%;
+                margin: 0 auto;
+                padding: 2.2rem 2rem;
+                border-radius: 22px;
+                background: linear-gradient(135deg, rgba(17, 44, 112, 0.96), rgba(91, 88, 235, 0.94));
+                color: #EAF2FF;
+                box-shadow: 0 18px 40px rgba(17, 44, 112, 0.35);
+                border: 1px solid rgba(86, 225, 233, 0.35);
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .locked-state-card::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(circle at top right, rgba(255,255,255,0.2), transparent 52%);
+                pointer-events: none;
+            }
+
+            .locked-state-icon {
+                width: 72px;
+                height: 72px;
+                border-radius: 50%;
+                margin: 0 auto 1rem;
+                font-size: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.35);
+                box-shadow: 0 8px 20px rgba(10, 35, 83, 0.28);
+            }
+
+            .locked-state-title {
+                margin: 0;
+                color: #FFFFFF;
+                font-size: 1.6rem;
+                font-weight: 800;
+                font-family: 'DM Sans', sans-serif;
+            }
+
+            .locked-state-subtitle {
+                margin: 0.8rem auto 1.5rem;
+                max-width: 520px;
+                color: rgba(234, 242, 255, 0.92);
+                font-size: 1rem;
+                line-height: 1.55;
+                font-family: 'Nunito', sans-serif;
+            }
+
+            .locked-state-features {
+                margin: 0 auto 1.5rem;
+                padding: 0;
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                gap: 0.8rem;
+                flex-wrap: wrap;
+            }
+
+            .locked-state-features li {
+                background: rgba(255, 255, 255, 0.16);
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                color: #FFFFFF;
+                padding: 0.45rem 0.75rem;
+                border-radius: 999px;
+                font-size: 0.88rem;
+                font-weight: 600;
+                font-family: 'DM Sans', sans-serif;
+            }
+
+            .locked-state-actions {
+                display: flex;
+                justify-content: center;
+                gap: 0.8rem;
+                flex-wrap: wrap;
+            }
+
+            .locked-login-btn,
+            .locked-create-btn {
+                border: none;
+                border-radius: 999px;
+                padding: 0.75rem 1.4rem;
+                font-weight: 700;
+                font-family: 'DM Sans', sans-serif;
+                cursor: pointer;
+                transition: all 0.25s ease;
+            }
+
+            .locked-login-btn {
+                background: linear-gradient(135deg, var(--palette-5), #7ee9ee);
+                color: var(--palette-1);
+                box-shadow: 0 8px 18px rgba(86, 225, 233, 0.35);
+            }
+
+            .locked-create-btn {
+                background: rgba(255, 255, 255, 0.16);
+                color: #FFFFFF;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .locked-login-btn:hover,
+            .locked-create-btn:hover {
+                transform: translateY(-2px);
+            }
+
             .explore-btn {
                 display: inline-flex;
                 align-items: center;
@@ -1906,6 +2017,12 @@
                     gap: 0.5rem !important;
                     position: relative !important;
                     min-height: 56px;
+                .locked-state-card{padding:1.5rem 1rem !important; border-radius:16px !important;}
+                .locked-state-title{font-size:1.25rem !important;}
+                .locked-state-subtitle{font-size:0.9rem !important; margin-bottom:1rem !important;}
+                .locked-state-icon{width:58px !important; height:58px !important; font-size:1.5rem !important;}
+                .locked-state-actions{gap:0.55rem !important;}
+                .locked-login-btn,.locked-create-btn{padding:0.65rem 1rem !important; font-size:0.82rem !important;}
                 }
                 .hamburger {
                     display: inline-flex !important;
@@ -3331,6 +3448,9 @@
 
             // Favorites functionality
             function toggleFavorite(businessId) {
+                if (!requireBusinessAccess()) {
+                    return;
+                }
                 const index = favorites.indexOf(businessId);
                 if (index > -1) {
                     favorites.splice(index, 1);
@@ -3353,6 +3473,14 @@
                 return favorites.includes(businessId);
             }
 
+            function requireBusinessAccess() {
+                if (currentUser) return true;
+                showToast('Please log in first to browse businesses', 'error');
+                showAccountModal();
+                showForm('login');
+                return false;
+            }
+
             // Navigation functionality
             function showPage(pageId) {
                 // Special handling for account - show modal instead of page
@@ -3360,6 +3488,11 @@
                     showAccountModal();
                     return;
                 }
+
+                if ((pageId === 'find-store' || pageId === 'favorites') && !requireBusinessAccess()) {
+                    return;
+                }
+
                 // If a business owner is signed in and tries to go to home, show their dashboard instead
                 if (currentUser && currentUser.isBusiness && pageId === 'home') {
                     pageId = 'biz-dashboard';
@@ -3432,6 +3565,12 @@
             // Load businesses into the grid
             function loadBusinesses(searchTerm = '', filterCategory = 'all', sortByDistanceFlag = false) {
                 const grid = document.getElementById('businessesGrid');
+                if (!requireBusinessAccess()) {
+                    if (grid) {
+                        grid.innerHTML = '';
+                    }
+                    return;
+                }
                 
                 // Category mapping
                 const categoryMap = {
@@ -3510,6 +3649,25 @@
             // Load featured businesses for home page
             function loadFeaturedBusinesses() {
                 const grid = document.getElementById('featuredBusinesses');
+                if (!currentUser) {
+                    grid.innerHTML = `
+                        <div class="locked-state-card">
+                            <div class="locked-state-icon">🔐</div>
+                            <h3 class="locked-state-title">Login to Unlock Businesses</h3>
+                            <p class="locked-state-subtitle">Browse local stores, view products and details, and save your favorite shops once you sign in.</p>
+                            <ul class="locked-state-features">
+                                <li>Explore nearby shops</li>
+                                <li>View products and hours</li>
+                                <li>Save favorites</li>
+                            </ul>
+                            <div class="locked-state-actions">
+                                <button class="locked-login-btn" onclick="showAccountModal(); showForm('login')">Login</button>
+                                <button class="locked-create-btn" onclick="showAccountModal(); showForm('createAccount')">Create account</button>
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
                 const featuredBusinesses = businesses.slice(0, 6); // Show first 6 businesses
 
                 grid.innerHTML = featuredBusinesses.map(business => {
@@ -3540,6 +3698,12 @@
             // Load favorite businesses for favorites page
             function loadFavoriteBusinesses() {
                 const grid = document.getElementById('favoritesGrid');
+                if (!requireBusinessAccess()) {
+                    if (grid) {
+                        grid.innerHTML = '';
+                    }
+                    return;
+                }
                 const favoriteBusinesses = businesses.filter(business => favorites.includes(business.id));
 
                 if (favoriteBusinesses.length === 0) {
@@ -3581,6 +3745,9 @@
 
             // Show business details in modal
             function showBusinessDetails(businessId) {
+                if (!requireBusinessAccess()) {
+                    return;
+                }
                 const business = businesses.find(b => b.id === businessId);
                 if (!business) return;
 
